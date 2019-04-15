@@ -10,6 +10,11 @@ if ( !empty($_GET['Applicant_Id'])) {
 }
 $_SESSION['SESS_APPNAME'] = $_GET['Applicant_Name'];
 
+$Choose_Position_Id = null;
+if ( !empty($_GET['Choose_Position_Id'])) {
+	$Choose_Position_Id = $_REQUEST['Choose_Position_Id'];
+}
+$_SESSION['SESS_POST'] = $_GET['app_post1'];
 ?>
 
 
@@ -240,17 +245,14 @@ $_SESSION['SESS_APPNAME'] = $_GET['Applicant_Name'];
 													 
 													  <th scope="col" ><input class="form-control" type="radio" name="Status_1"  value="Rejected" <?php if (isset($Status_1) && $Status_1=="Rejected") echo "checked";?></th>
 													
-													 <th scope="col" ><label for="waitingList">Rejected</label></th>
+													 <th scope="col" ><label for="Rejected">Rejected</label></th>
 													
 													
 													 <th scope="col" ><label for="waitingList"><input class="form-control" type="text" name="Status_2" maxlength="50" size="30" ></label></th>
 																							</tr>
 									</table>
-										<p>for <?php echo $_SESSION['SESS_APPNAME'];
-										//$_SESSION["appName"] = $_GET['Applicant_Name'];
-										
-										
-?></p>
+										<p>for <?php echo $_SESSION['SESS_APPNAME']; ?> with <?php echo $_SESSION['SESS_POST']; ?></p>
+
 										
 									<table class="table">
 																			

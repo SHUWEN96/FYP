@@ -1,29 +1,25 @@
-	<?php
+<?php
 //including the database connection file
 include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
 session_start();
 
-$Decision_Id = null;
-if ( !empty($_GET['Decision_Id'])) {
-	$Decision_Id = $_REQUEST['Decision_Id'];
-}
+ $Choose_Position_Id = null;
+    if ( !empty($_GET['Choose_Position_Id'])) {
+        $Choose_Position_Id = $_REQUEST['Choose_Position_Id'];
+    }
 
-$qlist = "SELECT * FROM decision WHERE Decision_Id='$Decision_Id'";
+$qlist = "SELECT * FROM position WHERE Choose_Position_Id='$Choose_Position_Id'";
 $reslist = $db->query($qlist);
 
  while($rowlist = $reslist->fetch_assoc()) {        
-    $user_Ic=$rowlist["user_Ic"];
+
 	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
     mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$query ="UPDATE decision SET Approval_status='Approval' WHERE Decision_Id='$Decision_Id'";
+	$query ="UPDATE position SET Position_checklist='1' WHERE Choose_Position_Id='$Choose_Position_Id'";
 
 	$result = mysqli_query($link, $query)or die("Failed to query database".mysqli_error($link));
-
-		echo '<script>alert("Approved");</script>';
-		echo "<script> location.href='javascript:history.back(1);'</script>";
-		exit;
-									   												  
-			} 
-   
-?>
+	 echo "<script>alert ('Verify successfully.')</script>";
+         echo "<br/><a href='javascript:self.history.back();'>Back</a>";
+ }
+ 

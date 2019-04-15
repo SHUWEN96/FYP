@@ -4,145 +4,7 @@ include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
 session_start();
 
- $Choose_Position_Id = null;
-    if ( !empty($_GET['Choose_Position_Id'])) {
-        $Choose_Position_Id = $_REQUEST['Choose_Position_Id'];
-    }
-	$Applicant_Id = null;
-    if ( !empty($_GET['Applicant_Id'])) {
-        $Applicant_Id = $_REQUEST['Applicant_Id'];
-    }
-	
-	 $Education_detail_Id = null;
-    if ( !empty($_GET['Education_detail_Id'])) {
-        $Education_detail_Id = $_REQUEST['Education_detail_Id'];
-    }
-	
-	 $Cocuriculum_Id = null;
-    if ( !empty($_GET['Cocuriculum_Id'])) {
-        $Cocuriculum_Id = $_REQUEST['Cocuriculum_Id'];
-    }
-	
-	 $Work_Experience_Id = null;
-    if ( !empty($_GET['Work_Experience_Id'])) {
-        $Work_Experience_Id = $_REQUEST['Work_Experience_Id'];
-    }
-	
-	 $Training_Id = null;
-    if ( !empty($_GET['Training_Id'])) {
-        $Training_Id = $_REQUEST['Training_Id'];
-    }
-	
-	 $self_reference_id = null;
-    if ( !empty($_GET['self_reference_id'])) {
-        $self_reference_id = $_REQUEST['self_reference_id'];
-    }
-	
-	 $acknowledgement_id = null;
-    if ( !empty($_GET['acknowledgement_id'])) {
-        $acknowledgement_id = $_REQUEST['acknowledgement_id'];
-    }
 
-if(isset($_POST['Submit'])) {  
-
-$qAlist = "SELECT * FROM position WHERE Choose_Position_Id='$Choose_Position_Id'";
-$reslistA = $db->query($qAlist);
-
- while($rowlistA = $reslistA->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryA ="UPDATE position SET Position_checklist='1' WHERE Choose_Position_Id='$Choose_Position_Id'";
-
-	$resultA = mysqli_query($link, $queryA)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qBlist = "SELECT * FROM applicant WHERE Applicant_Id='$Applicant_Id'";	
-$reslistB = $db->query($qBlist);
-
- while($rowlistB = $reslistB->fetch_assoc()) {        
-
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryB ="UPDATE applicant SET Applicant_checklist='1' WHERE Applicant_Id='$Applicant_Id'";	
-
-	$resultB = mysqli_query($link, $queryB)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qClist = "SELECT * FROM education WHERE Education_detail_Id='$Education_detail_Id'";
-$reslistC = $db->query($qClist);
-
- while($rowlistC = $reslistC->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryC ="UPDATE education SET Edu_checklist='1' WHERE Education_detail_Id='$Education_detail_Id'";
-
-	$resultC = mysqli_query($link, $queryC)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qDlist = "SELECT * FROM cocuriculum WHERE Cocuriculum_Id='$Cocuriculum_Id'";
-$reslistD = $db->query($qDlist);
-
- while($rowlistD = $reslistD->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryD ="UPDATE cocuriculum SET Cocuriculum_checklist='1' WHERE Cocuriculum_Id='$Cocuriculum_Id'";
-
-	$resultD = mysqli_query($link, $queryD)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qElist = "SELECT * FROM work_experience WHERE Work_Experience_Id='$Work_Experience_Id'";
-$reslistE = $db->query($qElist);
-
- while($rowlistE = $reslistE->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryE ="UPDATE work_experience SET Work_experience_checklist='1' WHERE Work_Experience_Id='$Work_Experience_Id'";
-
-	$resultE = mysqli_query($link, $queryE)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qFlist = "SELECT * FROM training WHERE Training_Id='$Training_Id'";
-$reslistF = $db->query($qFlist);
-
- while($rowlistF = $reslistF->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryF ="UPDATE training SET Training_checklist='1' WHERE Training_Id='$Training_Id'";
-
-	$resultF = mysqli_query($link, $queryF)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qGlist = "SELECT * FROM self_reference WHERE self_reference_id='$self_reference_id'";
-$reslistG = $db->query($qGlist);
-
- while($rowlistG = $reslistG->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryG ="UPDATE self_reference SET self_checklist='1' WHERE self_reference_id='$self_reference_id'";
-
-	$resultG = mysqli_query($link, $queryG)or die("Failed to query database".mysqli_error($link));
- }
- 
-$qHlist = "SELECT * FROM acknowledgement WHERE acknowledgement_id='$acknowledgement_id'";
-$reslistH = $db->query($qHlist);
-
- while($rowlistH = $reslistH->fetch_assoc()) {        
-
-	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-	$queryH ="UPDATE acknowledgement SET Ack_checklist='1' WHERE acknowledgement_id='$acknowledgement_id'";
-
-	$resultH = mysqli_query($link, $queryH)or die("Failed to query database".mysqli_error($link));
- }
-
-}
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -190,7 +52,7 @@ $reslistH = $db->query($qHlist);
 mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-$qlist = "SELECT SUM(main) total FROM (
+echo $qlist = "SELECT SUM(main)total FROM (
 SELECT a.Choose_Position_Id main FROM position a WHERE a.user_Ic = 961015086090
 UNION ALL 
 SELECT b.Applicant_Id FROM applicant b WHERE b.user_Ic = 961015086090 
@@ -397,7 +259,7 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
                 </div>
             </div>
         </div>
-		<form class="form-inline" name="listForm" method="post" enctype="multipart/form-data">
+		<form class="form-inline" action="verifyApp.php" name="listForm" method="post" enctype="multipart/form-data">
         <div class="content mt-3">
 		
             <div class="animated fadeIn">
@@ -416,66 +278,172 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
                                     <div id="AppForm">
 									
 									<tbody>
-									
+									<input type="hidden" name="app_post1" placeholder="<?php echo $_SESSION['SESS_POST'] ?>" value="app_post1">
+									<input type="hidden" name="Applicant_Name" placeholder="<?php echo $_SESSION['SESSAPP'] ?>" value="Applicant_Name">
+
                                         <tr>
                                             <th scope="col"><label for="part">Part</label></th>
+											<td scope="col"><label for="a">Position</label></td>
+											<td scope="col"><label for="b">Personal Information</label></td>
+											<td scope="col"><label for="c">Education Level</label></td>
+											<td scope="col"><label for="d">Cocuriculum Level</label></td>
+											 <td scope="col"><label for="e">Work Experiences</label></td>
+											 <td scope="col"><label for="f">Training Record/Courses</label></td>
+											 <td scope="col"><label for="g">Self References</label></td>
+                                            <td scope="col"><label for="h">Acknowledgement of Applicant</label>
+											<th scope="col"><label for="verify">Verify</label></th>
+										</tr>
+										
+										</td>
 											<th scope="col"><label for="finish">Finish Status</label></th>
+											<td scope="col">
+											<?php
+											 $Choose_Position_Id = null;
+										if ( !empty($_GET['Choose_Position_Id'])) {
+											$Choose_Position_Id = $_REQUEST['Choose_Position_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Position_checklist FROM position where Choose_Position_Id='$Choose_Position_Id'";
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Position_checklist"];
+							
+									?>
+											</td>
+											<td scope="col">	<?php
+											 $Applicant_Id = null;
+										if ( !empty($_GET['Applicant_Id'])) {
+											$Applicant_Id = $_REQUEST['Applicant_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Applicant_checklist FROM applicant WHERE Applicant_Id='$Applicant_Id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Applicant_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $Education_detail_Id = null;
+										if ( !empty($_GET['Education_detail_Id'])) {
+											$Education_detail_Id = $_REQUEST['Education_detail_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Edu_checklist FROM education WHERE Education_detail_Id='$Education_detail_Id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Edu_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $Cocuriculum_Id = null;
+										if ( !empty($_GET['Applicant_Id'])) {
+											$Cocuriculum_Id = $_REQUEST['Cocuriculum_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Cocuriculum_checklist FROM cocuriculum WHERE Cocuriculum_Id='$Cocuriculum_Id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Cocuriculum_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $Work_Experience_Id = null;
+										if ( !empty($_GET['Work_Experience_Id'])) {
+											$Work_Experience_Id = $_REQUEST['Work_Experience_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Work_experience_checklist FROM work_experience WHERE Work_Experience_Id='$Work_Experience_Id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Work_experience_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $Training_Id = null;
+										if ( !empty($_GET['Training_Id'])) {
+											$Training_Id = $_REQUEST['Training_Id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Training_checklist FROM training WHERE Training_Id='$Training_Id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Training_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $self_reference_id = null;
+										if ( !empty($_GET['self_reference_id'])) {
+											$self_reference_id = $_REQUEST['self_reference_id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT self_checklist FROM self_reference WHERE self_reference_id='$self_reference_id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["self_checklist"];
+							
+									?></td>
+											<td scope="col"><?php
+											 $acknowledgement_id = null;
+										if ( !empty($_GET['acknowledgement_id'])) {
+											$acknowledgement_id = $_REQUEST['acknowledgement_id'];
+										}
+										
+										$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+							$qlist = "SELECT Ack_checklist FROM acknowledgement WHERE acknowledgement_id='$acknowledgement_id'";	
+								  $reslist = $db->query($qlist);
+								$rowlist = $reslist->fetch_assoc();
+									echo $rowlist["Ack_checklist"];
+							
+									?></td>
+											<th scope="col"><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Verify" name="Submit"/></th>
                                          </tr>
                               
-                                        <tr>
-                                            <th scope="col"><label for="a">Position</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()" ></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="b">Personal Information</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()" ></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="c">Education Level</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="d">Cocuriculum Level</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="e">Experiences</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="f">Training Recotd/Courses</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1"onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										 <tr>
-                                            <th scope="col"><label for="g">Self References</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										  <tr>
-                                            <th scope="col"><label for="h">Acknowledgement of Applicant</label></th>
-											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
-                                         </tr>
-										 
-										  <tr>
-                                            <th scope="col"><label for="total">Total</label></th>
-											<th scope="col"><center><input type="text" name="total" class="form-control" size="8" value="0" readonly ></th>
-                                         </tr>
-
+                                      
 										
 										
                                     </tbody>
 									</div>
                                 </table>
-								 <div class="modal-footer">
-							<input style="border-radius: 8px;" type="submit" class="btn btn-success" value="OK" name="Submit"/>
 							
-                            </div>
                             </div>
 							</div>
                         </div>
@@ -529,7 +497,7 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 	function checkTotal() {
 		document.listForm.total.value = '';
 		var sum = 0;
-		for (i=0;i<document.listForm.choice.length;i++) {
+		for (i=0;i<document.listForm.choice.lengtd;i++) {
 		  if (document.listForm.choice[i].checked) {
 		  	sum = sum + parseInt(document.listForm.choice[i].value);
 		  }

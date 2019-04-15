@@ -9,6 +9,7 @@ if ( !empty($_GET['Applicant_Id'])) {
 	$Applicant_Id = $_REQUEST['Applicant_Id'];
 }
 
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -234,7 +235,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN applicant ON userlist.user_Ic = applicant.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 $reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
+    $row = $reslist->fetch_assoc();;
 
  
   
@@ -275,7 +276,7 @@ $reslist = $db->query($qlist);
         while($rowlist = $reslist->fetch_assoc()) {        
             echo "<tr>";
 		
-            echo "<td ><a href=\"updatePersonal.php?Applicant_Id=$rowlist[Applicant_Id]\">Edit</a> | <a href=\"deletePersonal.php?Applicant_Id=$rowlist[Applicant_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
+            echo "<td ><a href=\"updatePersonal.php?Applicant_Id=$rowlist[Applicant_Id]\">Edit</a> | <a href=\"deletePersonal.php?Applicant_Id=$rowlist[Applicant_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>| <a href=\"verifyPersonal.php?Applicant_Id=$rowlist[Applicant_Id]\" >Verify</a></td>";      
         }
         ?>
                             </div>
@@ -284,84 +285,84 @@ $reslist = $db->query($qlist);
                                     <tbody>
                                         <tr>
                                             <th scope="col"><label for="name">Full Name (Capital Letter)</label></th>
-                                            <th scope="col"><input class="form-control" type="text" id="name" placeholder="Enter name" name="name" required></th>
+                                            <th scope="col"><input class="form-control" type="text" id="name" placeholder="Enter name" name="name" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                              <th scope="col"><label for="user_Ic">No Identity Card</th>
                                              <th scope="col" ><input class="form-control" name="user_Ic" id="disabledInput" type="text" 
 											 placeholder="<?php echo $_SESSION['SESS_NOIC'] ?>" readonly></th>
                                        </tr>
                                         <tr>
                                             <th scope="col"><label for="age">Age</label></th>
-                                            <th scope="col"><input class="form-control" type="text" id="age" placeholder="Enter age" name="age" required></th>
+                                            <th scope="col"><input class="form-control" type="text" id="age" placeholder="Enter age" name="age" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                             <th scope="col"><label for="gender">Gender </label></th>
-											<th style="width: 120px; height: 20px;">
-                                            <select name="gender" class="form-control" required>
+											<th style="width: 120px; height: 20px;" <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> >
+                                            <select name="gender" class="form-control" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> >
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                             </select></th>
                                         </tr>
                                         <tr>
                                             <th scope="col"><label for="DOB">Date Of Birth </label></th>
-                                            <th scope="col"><input class="form-control" type="date" name="DOB" required></th>
+                                            <th scope="col"><input class="form-control" type="date" name="DOB" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                             <th scope="col"><label for="POB">Place Of Birth </label></th>
-                                            <th scope="col"><input class="form-control" type="text" id="POB" placeholder="Enter Place of Birth" name="POB" required></th>
+                                            <th scope="col"><input class="form-control" type="text" id="POB" placeholder="Enter Place of Birth" name="POB" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
                                         <tr style="height: 20px;">
                                         <th scope="col"><label for="citizen">Citizen</label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="citizen" placeholder="Enter citizen" name="citizen" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="citizen" placeholder="Enter citizen" name="citizen" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="religion">Religion</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="religion" placeholder="Enter religion" name="religion" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="religion" placeholder="Enter religion" name="religion" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
   
                                         <tr >
                                         <th scope="col"><label for="nation">Nation</label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="nation" placeholder="Enter nation" name="nation" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="nation" placeholder="Enter nation" name="nation" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="marryStatus">Marital Status</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="marryStatus" placeholder="Enter marryStatus" name="marryStatus"></th>
+                                        <th scope="col"><input class="form-control" type="text" id="marryStatus" placeholder="Enter marryStatus" name="marryStatus" <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
 
                                         <tr >
                                         <th scope="col"><label for="height">Height</label></th>
-                                        <th scope="col"><input class="form-control" type="text" placeholder="Enter height" name="height" maxlength="20"  required>&nbsp;cm</th>
+                                        <th scope="col"><input class="form-control" type="text" placeholder="Enter height" name="height" maxlength="20" required &nbsp;cm <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="weight">Weight</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" placeholder="Enter weight" name="weight" maxlength="20"  required>&nbsp;kg</th>
+                                        <th scope="col"><input class="form-control" type="text" placeholder="Enter weight" name="weight" maxlength="20"  required &nbsp;kg <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
    
                                         <tr >
                                         <th scope="col"><label for="VLC">Vehicle License (Class)</label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="VLC" placeholder="Enter Vehicle License class" name="VLC" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="VLC" placeholder="Enter Vehicle License class" name="VLC" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="email">Email</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="email" placeholder="Enter email" name="email" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="email" placeholder="Enter email" name="email" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
  
                                        <tr >
                                        <th scope="col"><label for="address">Address </label></th>
-                                       <th colspan="4" scope="col"><input class="form-control" type="text" id="add" placeholder="Enter address" name="add" size="60" required></th>
+                                       <th colspan="4" scope="col"><input class="form-control" type="text" id="add" placeholder="Enter address" name="add" size="60" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                        </tr>
 
                                         <tr >
                                         <th scope="col"><label for="tel">Telephone No (Home)</label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="tel" placeholder="Enter tel" name="tel" ></th>
+                                        <th scope="col"><input class="form-control" type="text" id="tel" placeholder="Enter tel" name="tel" <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="HpNo">Telephone No (H/P)</label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="HpNo" placeholder="Enter HpNo" name="HpNo" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="HpNo" placeholder="Enter HpNo" name="HpNo" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
                                         
                                         <tr >
                                         <th scope="col"><label for="couple">Couple Name (If married) </label></th>
-                                        <th colspan="4" scope="col"><input class="form-control" type="text" id="couple" placeholder="Enter couple name" name="couple"></th>
+                                        <th colspan="4" scope="col"><input class="form-control" type="text" id="couple" placeholder="Enter couple name" name="couple" <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
 
                                         <tr >
                                         <th scope="col"><label for="mother">Mother's Name </label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="mom" placeholder="Enter mom name" name="mom" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="mom" placeholder="Enter mom name" name="mom" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="momIC">No Identity Card</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="momIC" placeholder="Enter momIC" name="momIC" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="momIC" placeholder="Enter momIC" name="momIC" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
 
                                         <tr >
                                         <th scope="col"><label for="father">Father's Name </label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="dad" placeholder="Enter dad name" name="dad" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="dad" placeholder="Enter dad name" name="dad" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         <th scope="col"><label for="dadIC">No Identity Card</th></label></th>
-                                        <th scope="col"><input class="form-control" type="text" id="dadIC" placeholder="Enter dadIC" name="dadIC" required></th>
+                                        <th scope="col"><input class="form-control" type="text" id="dadIC" placeholder="Enter dadIC" name="dadIC" required <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></th>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -370,7 +371,7 @@ $reslist = $db->query($qlist);
                     </div>
                 </div>
             </div><!-- .animated -->
-			<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert"/></div>
+			<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert" <?php echo $row["Applicant_checklist"] =1? "disabled ":""?> ></div>
 				<div style='float:right;'><ul class="pagination">
     <li class="page-item"><a class="page-link" href="i.php">1</a></li>
     <li class="page-item active" aria-current="page">

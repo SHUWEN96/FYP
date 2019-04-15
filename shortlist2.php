@@ -250,10 +250,10 @@ session_start();
 									
 									$count=0;
 									 while($rowlist = $reslist->fetch_assoc()) { 
-											 
+											
 											   $user_Ic=$rowlist["user_Ic"];
 											if ($rowlist['app_post1'] == 'DS53 PROFESOR MADYA'){
-												$count++;
+												$count++; 
 											   echo "<tr>";
 													echo"<td style='width:5%'>" .$count."</td>";
 													echo"<td style='width:20%' align='center'>" .$rowlist['Applicant_Name']." </td>";
@@ -271,6 +271,7 @@ session_start();
 											if ($rowlist['Status_1'] == 'Interview') {
 											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='DecisionIv.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Decision</a></td>";
 											}
+													
 													
 											}			
 									 }

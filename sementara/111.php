@@ -3,14 +3,146 @@
 include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
 session_start();
- $Training_Id = null;
+
+ $Choose_Position_Id = null;
+    if ( !empty($_GET['Choose_Position_Id'])) {
+        $Choose_Position_Id = $_REQUEST['Choose_Position_Id'];
+    }
+	$Applicant_Id = null;
+    if ( !empty($_GET['Applicant_Id'])) {
+        $Applicant_Id = $_REQUEST['Applicant_Id'];
+    }
+	
+	 $Education_detail_Id = null;
+    if ( !empty($_GET['Education_detail_Id'])) {
+        $Education_detail_Id = $_REQUEST['Education_detail_Id'];
+    }
+	
+	 $Cocuriculum_Id = null;
+    if ( !empty($_GET['Cocuriculum_Id'])) {
+        $Cocuriculum_Id = $_REQUEST['Cocuriculum_Id'];
+    }
+	
+	 $Work_Experience_Id = null;
+    if ( !empty($_GET['Work_Experience_Id'])) {
+        $Work_Experience_Id = $_REQUEST['Work_Experience_Id'];
+    }
+	
+	 $Training_Id = null;
     if ( !empty($_GET['Training_Id'])) {
         $Training_Id = $_REQUEST['Training_Id'];
     }
 	
-//fetching data in descending order (lastest entry first)
-//$result = mysql_query("SELECT * FROM work_experience ORDER BY id DESC"); // mysql_query is deprecated
-$result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DESC"); // using mysqli_query instead
+	 $self_reference_id = null;
+    if ( !empty($_GET['self_reference_id'])) {
+        $self_reference_id = $_REQUEST['self_reference_id'];
+    }
+	
+	 $acknowledgement_id = null;
+    if ( !empty($_GET['acknowledgement_id'])) {
+        $acknowledgement_id = $_REQUEST['acknowledgement_id'];
+    }
+
+if(isset($_POST['Submit'])) {  
+
+$qAlist = "SELECT * FROM position WHERE Choose_Position_Id='$Choose_Position_Id'";
+$reslistA = $db->query($qAlist);
+
+ while($rowlistA = $reslistA->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryA ="UPDATE position SET Position_checklist='1' WHERE Choose_Position_Id='$Choose_Position_Id'";
+
+	$resultA = mysqli_query($link, $queryA)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qBlist = "SELECT * FROM applicant WHERE Applicant_Id='$Applicant_Id'";	
+$reslistB = $db->query($qBlist);
+
+ while($rowlistB = $reslistB->fetch_assoc()) {        
+
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryB ="UPDATE applicant SET Applicant_checklist='1' WHERE Applicant_Id='$Applicant_Id'";	
+
+	$resultB = mysqli_query($link, $queryB)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qClist = "SELECT * FROM education WHERE Education_detail_Id='$Education_detail_Id'";
+$reslistC = $db->query($qClist);
+
+ while($rowlistC = $reslistC->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryC ="UPDATE education SET Edu_checklist='1' WHERE Education_detail_Id='$Education_detail_Id'";
+
+	$resultC = mysqli_query($link, $queryC)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qDlist = "SELECT * FROM cocuriculum WHERE Cocuriculum_Id='$Cocuriculum_Id'";
+$reslistD = $db->query($qDlist);
+
+ while($rowlistD = $reslistD->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryD ="UPDATE cocuriculum SET Cocuriculum_checklist='1' WHERE Cocuriculum_Id='$Cocuriculum_Id'";
+
+	$resultD = mysqli_query($link, $queryD)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qElist = "SELECT * FROM work_experience WHERE Work_Experience_Id='$Work_Experience_Id'";
+$reslistE = $db->query($qElist);
+
+ while($rowlistE = $reslistE->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryE ="UPDATE work_experience SET Work_experience_checklist='1' WHERE Work_Experience_Id='$Work_Experience_Id'";
+
+	$resultE = mysqli_query($link, $queryE)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qFlist = "SELECT * FROM training WHERE Training_Id='$Training_Id'";
+$reslistF = $db->query($qFlist);
+
+ while($rowlistF = $reslistF->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryF ="UPDATE training SET Training_checklist='1' WHERE Training_Id='$Training_Id'";
+
+	$resultF = mysqli_query($link, $queryF)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qGlist = "SELECT * FROM self_reference WHERE self_reference_id='$self_reference_id'";
+$reslistG = $db->query($qGlist);
+
+ while($rowlistG = $reslistG->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryG ="UPDATE self_reference SET self_checklist='1' WHERE self_reference_id='$self_reference_id'";
+
+	$resultG = mysqli_query($link, $queryG)or die("Failed to query database".mysqli_error($link));
+ }
+ 
+$qHlist = "SELECT * FROM acknowledgement WHERE acknowledgement_id='$acknowledgement_id'";
+$reslistH = $db->query($qHlist);
+
+ while($rowlistH = $reslistH->fetch_assoc()) {        
+
+	$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
+    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
+	$queryH ="UPDATE acknowledgement SET Ack_checklist='1' WHERE acknowledgement_id='$acknowledgement_id'";
+
+	$resultH = mysqli_query($link, $queryH)or die("Failed to query database".mysqli_error($link));
+ }
+
+}
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -30,27 +162,53 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
+
 
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-<style>
+	<style>
 	body { 
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size:14px;
 }
 	</style>
-
 </head>
+
 <body>
+<?php  	  
+/*$link = mysqli_connect("localhost", "root", "");
+
+mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+echo $qlist = "SELECT SUM(main)total FROM (
+SELECT a.Choose_Position_Id main FROM position a WHERE a.user_Ic = 961015086090
+UNION ALL 
+SELECT b.Applicant_Id FROM applicant b WHERE b.user_Ic = 961015086090 
+UNION ALL 
+SELECT c.Education_detail_Id FROM education c WHERE c.user_Ic = 961015086090
+UNION ALL 
+SELECT d.Cocuriculum_Id FROM cocuriculum d WHERE d.user_Ic = 961015086090
+UNION ALL 
+SELECT e.Work_Experience_Id FROM work_experience e WHERE e.user_Ic = 961015086090
+UNION ALL 
+SELECT f.Training_Id FROM training f WHERE f.user_Ic = 961015086090
+UNION ALL 
+SELECT g.self_reference_id FROM self_reference g WHERE g.user_Ic = 961015086090
+UNION ALL 
+SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 961015086090
+)ApplicationForm";
+*/
+?>
 
 
     <!-- Left Panel -->
@@ -58,7 +216,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
 				<aside id="left-panel" class="left-panel">
 					<nav class="navbar navbar-expand-sm navbar-default">
 
-							<div class="navbar-header">
+						<div class="navbar-header">
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
 								<i class="fa fa-bars"></i>
 							</button>
@@ -100,7 +258,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
 									<a href="5.php"> </i>Training Record/Course </a>
 								</li>
 								<li class="active">
-									<a href="6.php"> </i>Self References </a>
+									<a href="6.html"> </i>Self References </a>
 								</li>
 								<li class="active">
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
@@ -117,7 +275,6 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
 						</div><!-- /.navbar-collapse -->
 					</nav>
 				</aside><!-- /#left-panel -->
-
     <!-- Left Panel -->
 
     <!-- Right Panel -->
@@ -207,7 +364,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
                     </div>
                 </div>
 
-                  <div class="col-sm-5">
+                     <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
@@ -224,21 +381,6 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
                 </div>
             </div>
 
-<?php  	  
-$link = mysqli_connect("localhost", "root", "");
-
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN training ON userlist.user_Ic = training.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-$reslist = $db->query($qlist);
-  $row = $reslist->fetch_assoc();
-
- 
-  
-?>
         </header><!-- /header -->
         <!-- Header-->
        <div class="breadcrumbs">
@@ -249,145 +391,102 @@ $reslist = $db->query($qlist);
                         <ol class="breadcrumb text-right">
                             
                             <li><a href="#">Application Form</a></li>
-                            <li class="active">Training Record</li>
+                            <li class="active">Choose Position</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-    <form class="form-inline" action="AddTraining.php?Training_Id=<?php echo $Training_Id?>" method="post" enctype="multipart/form-data" >
-         <div class="content mt-3">
-            <div class="animated">
-
-                <div class="card">
-                    <div class="card-header">
-                        <i class="mr-2 fa fa-align-justify"></i>
-                        <strong class="card-title" style="font-size:px;">5. TRAINING RECORD</strong>
+		<form class="form-inline" name="listForm" method="post" enctype="multipart/form-data">
+        <div class="content mt-3">
+		
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+							 <i class="mr-2 fa fa-align-justify"></i>
+                                <strong class="card-title" style="font-size:px;">Verification</strong>
 							
-                    </div>
-                    <div class="card-body">
-							   <button style="border-radius: 8px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal" <?php echo $row["Work_experience_checklist"] =1? "disabled ":""?>>Add New Data</button>
-							  <br/>
-							  <br/>
+                            </div>
+							<div id="AppForm"> 
+                            <div class="card-body">
                                 <table class="table">
-                                    <tbody>
-                                        <tr style="height: 20px;">
-  
-  <th scope="col"><label for="Training_Name">Course Name</label></th>
-  <th scope="col"><label for="Training_date_start">Start Date</label></th>
-  <th scope="col"><label for="Training_date_end">End Date</label></th>
-  <th scope="col"><label for="Training_Organizer">Organizer</label></th>
-  <th scope="col"><label for="Training_Place">Place</label></th>
-  <th scope="col"><label for="Training_Result">Results</label></th>
-  <th scope="col"><label for="action">Action</label></th>
-</tr>
-
-        <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
-            echo "<tr>";
-			
-            echo "<td style='width:20%' align='center'>".$rowlist['Training_Name']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Training_date_start']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Training_date_end']."</td>";    
-			echo "<td style='width:20%' align='center'>".$rowlist['Training_Organizer']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Training_Place']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Training_Result']."</td>";
-            echo "<td style='width:20%' align='center'><a href=\"editTraining.php?Training_Id=$rowlist[Training_Id]\">Edit</a> | <a href=\"deleteTraining.php?Training_Id=$rowlist[Training_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> |<a href=\"verifyTrain.php?Training_Id=$rowlist[Training_Id]\">Verify</a></td>";      
-        }
-        ?>
-       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                
-				<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="mediumModalLabel">Add Data</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                               <div class="card-body">
-                                <table class="table"  border="0">
 								<input type="hidden" class="form-control" name="user_Ic" id="disabledInput" type="text" placeholder="<?php echo $_SESSION['SESS_NOIC'] ?>" readonly>
-                                    <tbody>
-										
-                                        <tr>
-                                             <th scope="col">Course Name</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Training_Name"  required></th>
-                                        
-                                        </tr>
-										
-										<tr>
-                                             <th scope="col">Start Date</th>
-                                             <th scope="col" ><input class="form-control" type="date" name="Training_date_start" required></th>
-                                        
-                                        </tr>
-										
-										<tr>
-                                             <th scope="col">End Date</th>
-                                             <th scope="col" ><input class="form-control" type="date" name="Training_date_end" required></th>
-                                        
-                                        </tr>
-										<tr>
-                                             <th scope="col">Organizer</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Training_Organizer" required></th>
-                                        
-                                        </tr>
-										<tr>
-                                             <th scope="col">Place</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Training_Place" required></th>
-                                        
-                                        </tr>
-										<tr>
-                                             <th scope="col">Results</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Training_Result" required></th>
-                                        
-                                        </tr>
+                                    <div id="AppForm">
 									
+									<tbody>
+									
+                                        <tr>
+                                            <th scope="col"><label for="part">Part</label></th>
+											<th scope="col"><label for="finish">Finish Status</label></th>
+                                         </tr>
+                              
+                                        <tr>
+                                            <th scope="col"><label for="a">Position</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()" ></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="b">Personal Information</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()" ></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="c">Education Level</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="d">Cocuriculum Level</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="e">Experiences</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="f">Training Recotd/Courses</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1"onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										 <tr>
+                                            <th scope="col"><label for="g">Self References</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										  <tr>
+                                            <th scope="col"><label for="h">Acknowledgement of Applicant</label></th>
+											<th scope="col"><center><input type="checkbox" name="choice" value="1" onchange="checkTotal()"></th>
+                                         </tr>
+										 
+										  <tr>
+                                            <th scope="col"><label for="total">Total</label></th>
+											<th scope="col"><center><input type="text" name="total" class="form-control" size="8" value="0" readonly ></th>
+                                         </tr>
+
+										
+										
                                     </tbody>
+									</div>
                                 </table>
-                            </div>
-                            </div>
-                            <div class="modal-footer">
-							<input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Add" name="Submit"/>
-							<input style="border-radius: 8px;" type="submit" class="btn btn-primary" value="Back" name="Back"/><a href="5.php"></a>
+								 <div class="modal-footer">
+							<input style="border-radius: 8px;" type="submit" class="btn btn-success" value="OK" name="Submit"/>
 							
                             </div>
+                            </div>
+							</div>
                         </div>
                     </div>
                 </div>
             </div><!-- .animated -->
-			
-				<div style='float:right;'><nav aria-label="...">
-  <ul class="pagination">
-   <li class="page-item"><a class="page-link" href="i.php">1</a></li>
-    <li class="page-item"><a class="page-link" href="1.php">2</a></li>
-	<li class="page-item"><a class="page-link" href="education.php">3</a></li>
-	 <li class="page-item"><a class="page-link" href="cocuriculum.php">4</a></li>
-	 <li class="page-item"><a class="page-link" href="4.php">5</a></li>
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">
-        6
-        <span class="sr-only">(current)</span>
-      </span>
-    </li>
-	 
-    <li class="page-item"><a class="page-link" href="6.php">7</a></li>
-	<li class="page-item"><a class="page-link" href="7.php">8</a></li>
-  
-  </ul>
-</nav></div>
-        </div><!-- .content -->
-  
+		
    </form>
+    
    <br>
-   </div><!-- /#right-panel -->
+    </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
 
@@ -422,8 +521,22 @@ $reslist = $db->query($qlist);
                 normalizeFunction: 'polynomial'
             });
         })(jQuery);
-    </script>
 
+ 
+}
+</script>
+<script type="text/javascript">
+	function checkTotal() {
+		document.listForm.total.value = '';
+		var sum = 0;
+		for (i=0;i<document.listForm.choice.length;i++) {
+		  if (document.listForm.choice[i].checked) {
+		  	sum = sum + parseInt(document.listForm.choice[i].value);
+		  }
+		}
+		document.listForm.total.value = sum;
+	}
+</script>
 </body>
 
 </html>

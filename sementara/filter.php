@@ -1,8 +1,15 @@
 <?php
-//including the database connection file
 include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
+
+$pos = $_GET["pos"];
+
 session_start();
+
+$Applicant_Id = null;
+if ( !empty($_GET['Applicant_Id'])) {
+	$Applicant_Id = $_REQUEST['Applicant_Id'];
+}
 
 ?>
 <!doctype html>
@@ -206,12 +213,12 @@ session_start();
                 <div class="card">
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
-                        <strong class="card-title" style="font-size:px;"> SHORT APPLICANT LIST</strong>
+                        <strong class="card-title" style="font-size:px;"> APPLICANT LIST</strong>
                     </div>
 					
                     <div class="card-body">
                                            
-                                             <p scope="col"><select id='app_post1' class="form-control" name='app_post'>
+                                             <p scope="col"><select id='app_post1' class="form-control" name='app_post1' value='<?php echo $pos?>'>
                                                  <option value="">Select Position Level</option>
 												 <option value="1">DS45 LECTURER</option>
                                                  <option value="2">DS51 SENIOR LECTURER</option>
@@ -223,80 +230,70 @@ session_start();
                                        
                                 <table class="table">
 								<div class="card-header">
-								<strong class="card-title" style="font-size:px;"> DS45 LECTURER</strong>	
+								<strong class="card-title" style="font-size:px;"> <?php echo $pos?></strong>	
 								</div>
 							      <tbody>
-									<tr >
-									  <th scope="col" ><label for="no">No</label></th>
-									  <th scope="col" ><label for="Applicant_Name">Applicant Name</label></th>
-									  <th scope="col" ><label for="user_Ic">Applicant IC</label></th>
-									  <th scope="col" ><label for="status">Status</label></th>
-									  <th scope="col" ><label for="approve">Manager Approval</label></th>
-									   <th scope="col" ><label for="approveDate">Date Approval</label></th>
-									   <th scope="col" ><label for="notify">Notification</label></th>
-									  
-									    <th scope="col" ><label for="decisionIv">Interview Decision</label></th>
-									    
-									  
-									</tr>
-									<?php  	  
-									$link = mysqli_connect("localhost", "root", "");
+									 
+										
+										<tr >
+										  <th scope="col" ><label for="no">No</label></th>
+										  <th scope="col" ><label for="Applicant_Name">Applicant Name</label></th>
+										  <th scope="col" ><label for="user_Ic">Applicant IC</label></th>
+										  <th scope="col" ><label for="app_post1">Job Position</label></th>
+										  <th scope="col" ><label for="faculty">Faculty</label></th>
+										  <th colspan="3" scope="col" ><label for="action">Action</label></th>
+										  
+										</tr>
+										<?php  	  
+								$link = mysqli_connect("localhost", "root", "");
 
-									mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-									mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-									$qlist = 'SELECT * FROM decision';
-									
-									$reslist = $db->query($qlist);
-									
-									$count=0;
-									 while($rowlist = $reslist->fetch_assoc()) { 
-											
-											   $user_Ic=$rowlist["user_Ic"];
-											if ($rowlist['app_post1'] == 'DS45 LECTURER'){
-												$count++; 
-											   echo "<tr>";
-													echo"<td style='width:5%'>" .$count."</td>";
-													echo"<td style='width:20%' align='center'>" .$rowlist['Applicant_Name']." </td>";
-													echo"<td style='width:20%' align='center'>" .$rowlist['user_Ic']."</td>";
-													
-														if ($rowlist['Status_1'] == 'Interview') {
-													  // do something
-													  echo"<td style='width:15%' align='center'>" .$rowlist['Status_1']."</td>";	
-													} else {
-													  echo"<td style='width:15%' align='center'>" .$rowlist['Status_1']."<br/>".$rowlist['Status_2']."</td>";	
-											}		
-											echo"<td style='width:10%' align='center'>" .$rowlist['Approval_status']."</td>";
-											echo"<td style='width:10%' align='center'>" .$rowlist['dateTime']."</td>";
-											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='notify.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Notify</a></td>";
-											if ($rowlist['Status_1'] == 'Interview') {
-											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='DecisionIv.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Decision</a></td>";
-											}
-													
-													
-											}			
-									 }
+								mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+								mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+								$qlist = "SELECT * FROM position LEFT JOIN applicant ON position.user_Ic = applicant.user_Ic WHERE app_post1='".$_GET['pos']."'";
+								$reslist = $db->query($qlist);
+							    $count=0;
+								  while($rowlist = $reslist->fetch_assoc()) { 
+								 	
+										   $user_Ic=$rowlist["user_Ic"];
+										
+										       $count++;
+										   echo "<tr>";
+												echo"<td style='width:5%' align='center'>" .$count."</td>";
+												echo"<td style='width:30%' align='center'>" .$rowlist['Applicant_Name']." </td>";
+												echo"<td style='width:25%' align='center'>" .$rowlist['user_Ic']."</td>";
+												echo"<td style='width:25%' align='center'>" .$rowlist['app_post1']."</td>";
+												echo"<td style='width:10%' align='center'>" .$rowlist['faculty']."</td>";
+												echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-info btn-sm' href ='viewlistOff.php?user_Ic=$rowlist[user_Ic]'>View</a></td>";
+												echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='officerdecision.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] & app_post1=$rowlist[app_post1]  '>Approval</a></td>";
+												
+												echo "</tr>";
+										    
+										  
+								 }
+?>
 
-									?>
                                     </tbody>
                                 </table>
-										
-									
-								</div>
-				</div>
-							</div>
-							<div class="modal-footer">
-							<a style="border-radius: 8px;" class="btn btn-primary" href="officer.php">OK</a>
+								
+                            </div>
 							
-                            </div>	
-				</div><!-- .animated -->
-				
-		
+							<br/>
+					<br/>
+					
+				    
+																	
+																	
+						
+					
+                </div>
+                 
+            </div><!-- .animated -->
 			
-			</div><!-- .content -->
-	
-	   </form>
-	   <br>
-		 </div><!-- /#right-panel -->
+        </div><!-- .content -->
+  
+   </form>
+   <br>
+   </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
 
@@ -334,16 +331,9 @@ session_start();
     </script>
 <script>
 $('#verify').click(function(){
-	var page_type = $('#app_post1').val();
 	
-	if(page_type==1){
-		window.location.href='shortlist.php'
-	}else if(page_type==2){
-		window.location.href='shortlist1.php'
-	}else if(page_type==3){
-		window.location.href='shortlist2.php'
-	}
-	
+		window.location.href='appList.php?pos='+$("#app_post1").val();
+
 return false;
 }
 )

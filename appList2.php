@@ -215,7 +215,7 @@ if ( !empty($_GET['Applicant_Id'])) {
                     </div>
 					
                     <div class="card-body">
-							   <p scope="col"><select id='app_post1' class="form-control" name='app_post'>
+							   <p scope="col"><select id='app_post1' class="form-control" name='app_post1'>
                                                  <option value="">Select Position Level</option>
 												 <option value="1">DS45 LECTURER</option>
                                                  <option value="2">DS51 SENIOR LECTURER</option>
@@ -238,6 +238,7 @@ if ( !empty($_GET['Applicant_Id'])) {
 										  <th scope="col" ><label for="no">No</label></th>
 										  <th scope="col" ><label for="Applicant_Name">Applicant Name</label></th>
 										  <th scope="col" ><label for="user_Ic">Applicant IC</label></th>
+										  <th scope="col" ><label for="app_post1">Job Position</label></th>
 										  <th scope="col" ><label for="faculty">Faculty</label></th>
 										  <th colspan="3" scope="col" ><label for="action">Action</label></th>
 										  
@@ -260,9 +261,10 @@ if ( !empty($_GET['Applicant_Id'])) {
 												echo"<td style='width:5%' align='center'>" .$count."</td>";
 												echo"<td style='width:30%' align='center'>" .$rowlist['Applicant_Name']." </td>";
 												echo"<td style='width:25%' align='center'>" .$rowlist['user_Ic']."</td>";
+												echo"<td style='width:25%' align='center'>" .$rowlist['app_post1']."</td>";
 												echo"<td style='width:10%' align='center'>" .$rowlist['faculty']."</td>";
 												echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-info btn-sm' href ='viewlistOff.php?user_Ic=$rowlist[user_Ic]'>View</a></td>";
-												echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='officerdecision.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Approval</a></td>";
+													echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='officerdecision.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] & app_post1=$rowlist[app_post1]  '>Approval</a></td>";
 												
 												echo "</tr>";
 										       

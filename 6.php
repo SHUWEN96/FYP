@@ -228,7 +228,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN self_reference ON userlist.user_Ic = self_reference.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 $reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
+   $row = $reslist->fetch_assoc();
 
  
   
@@ -268,7 +268,7 @@ $reslist = $db->query($qlist);
         while($rowlist = $reslist->fetch_assoc()) {        
             echo "<tr>";
 		
-            echo "<td ><a href=\"updateSelf.php?self_reference_id=$rowlist[self_reference_id]\">Edit</a> | <a href=\"deleteSelf.php?self_reference_id=$rowlist[self_reference_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
+            echo "<td ><a href=\"updateSelf.php?self_reference_id=$rowlist[self_reference_id]\">Edit</a> | <a href=\"deleteSelf.php?self_reference_id=$rowlist[self_reference_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> |<a href=\"verifySelf.php?self_reference_id=$rowlist[self_reference_id]\">Verify</a> </td>";      
         }
         ?>
                     </div>
@@ -280,25 +280,25 @@ $reslist = $db->query($qlist);
 										<tbody>
 											<tr>
 												 <th scope="col"><label for="person1">Name</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="person1" name="person1" size="10" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="person1" name="person1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="add1">Address</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="add1" name="add1" size="30" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="add1" name="add1" size="30" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="job1">Job</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="job1" name="job1" size="10" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="job1" name="job1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr> 
 												 <th scope="col"><label for="tel1">H/P Number</label></th>
-												 <th scope="col"><input class="form-control" type="text" id="tel1" name="tel1" size="10" required></label></th>
+												 <th scope="col"><input class="form-control" type="text" id="tel1" name="tel1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											 </tr>
 										 
 											<tr> 
@@ -322,25 +322,25 @@ $reslist = $db->query($qlist);
 										<tbody>
 											<tr>
 												 <th scope="col"><label for="person2">Name</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="person2" name="person2" size="10" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="person2" name="person2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="add2">Address</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="add2" name="add2" size="30" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="add2" name="add2" size="30" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="job2">Job</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="job2" name="job2" size="10" required></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="job2" name="job2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr> 
 												 <th scope="col"><label for="tel2">H/P Number</label></th>
-												 <th scope="col"><input class="form-control" type="text" id="tel2" name="tel2" size="10" required></label></th>
+												 <th scope="col"><input class="form-control" type="text" id="tel2" name="tel2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
 											 </tr>
 										 
 											<tr> 
@@ -352,7 +352,7 @@ $reslist = $db->query($qlist);
 						
 					</div>
 				</div><!-- .animated -->
-				<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert"/></div>
+				<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></div>
 				<div style='float:right;'><nav aria-label="...">
   <ul class="pagination">
    <li class="page-item"><a class="page-link" href="i.php">1</a></li>

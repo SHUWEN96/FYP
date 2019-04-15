@@ -3,6 +3,10 @@
 include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
 session_start();
+ $Education_detail_Id = null;
+    if ( !empty($_GET['Education_detail_Id'])) {
+        $Education_detail_Id = $_REQUEST['Education_detail_Id'];
+    }
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM work_experience ORDER BY id DESC"); // mysql_query is deprecated
 $result = mysqli_query($mysqli, "SELECT * FROM education ORDER BY Education_detail_Id DESC"); // using mysqli_query instead
@@ -230,6 +234,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN education ON userlist.user_Ic = education.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
       $reslist = $db->query($qlist);
+	 
 
  
   
@@ -245,13 +250,13 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
                         <ol class="breadcrumb text-right">
                             
                             <li><a href="#">Application Form</a></li>
-                            <li class="active">Work Experiences</li>
+                            <li class="active">Education Level</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-    <form class="form-inline" action="AddEdu.php" method="post" enctype="multipart/form-data" >
+    <form class="form-inline" action="AddEdu.php?Education_detail_Id=<?php echo $Education_detail_Id?>" method="post" enctype="multipart/form-data" >
          <div class="content mt-3">
             <div class="animated">
 
@@ -259,10 +264,12 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
                         <strong class="card-title" style="font-size:px;">2. EDUCATION LEVEL</strong>
+						
+									
                     </div>
                     <div class="card-body">
 				
-							  <button style="border-radius: 8px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal">Add New Data</button>
+							  <button style="border-radius: 8px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal"  <?php echo $row["Edu_checklist"] =1? "disabled ":""?>>Add New Data</button>
 							  <br/>
 							  <br/>
 				  
@@ -300,7 +307,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
             echo "<td style='width:10%' align='center'>".$rowlist['Edu_Status']."</td>";
 			echo "<td style='width:10%' align='center'>".$rowlist['Edu_Date']."</td>";
 			echo "<td style='width:5%' align='center'>".$rowlist['Edu_Cert']."</td>";
-           echo "<td style='width:20%' align='center'><a href=\"subject.php?Education_detail_Id=$rowlist[Education_detail_Id] & Edu_Type=$rowlist[Edu_Type]& user_Ic=$rowlist[user_Ic]\">Subject</a> ||<a href=\"editEdu.php?Education_detail_Id=$rowlist[Education_detail_Id]\">Edit</a> | <a href=\"deleteEdu.php?Education_detail_Id=$rowlist[Education_detail_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
+           echo "<td style='width:20%' align='center'><a href=\"subject.php?Education_detail_Id=$rowlist[Education_detail_Id] & Edu_Type=$rowlist[Edu_Type]& user_Ic=$rowlist[user_Ic]\">Subject</a> |<a href=\"editEdu.php?Education_detail_Id=$rowlist[Education_detail_Id]\">Edit</a> | <a href=\"deleteEdu.php?Education_detail_Id=$rowlist[Education_detail_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>|<a href=\"verifyEdu.php?Education_detail_Id=$rowlist[Education_detail_Id]\">Verify</a> </td>";      
         }
         ?>
 		
@@ -338,7 +345,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="mediumModalLabel">Add Data</h5>
+                                <h5 class="modal-title" id="mediumModalLabel" >Add Data</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -350,7 +357,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 									<input type="hidden" class="form-control" name="user_Ic" id="disabledInput" type="text" placeholder="<?php echo $_SESSION['SESS_NOIC'] ?>" readonly>
 									<tr>
 									 <th scope="col">Education Level</th>
-									<th><select name='Edu_Type' class="form-control" required>
+									<th><select name='Edu_Type' class="form-control" required >
 									<option value="">Select Level</option>
 									<option value="Primary">Primary</option>
 									<option value="SRP/PMR">SRP/PMR</option>
@@ -363,42 +370,42 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 									</tr>
                                         <tr>
                                              <th scope="col">School Name/Name of Institution & Branch</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Edu_School" required></th>
+                                             <th scope="col" ><input class="form-control" type="text" name="Edu_School" required  ></th>
                                         
                                         </tr>
 										
 										<tr>
                                              <th scope="col">Year End</th>
-                                             <th scope="col" ><input class="form-control" type="number" name="Edu_Year" min="1990" max="2018" required></center></th>
+                                             <th scope="col" ><input class="form-control" type="number" name="Edu_Year" min="1990" max="2018" required ></center></th>
                                         
                                         </tr>
 										
 										<tr>
                                              <th scope="col">Grade/CGPA</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Level" required></th>
+                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Level" required ></th>
                                         
                                         </tr>
 										
 										<tr>
                                              <th scope="col">Specialization Area</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Specialize" ></th>
+                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Specialize" required></th>
                                         
                                         </tr>
 										
 										<tr>
                                              <th scope="col">Status</th>
-                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Status" ></th>
+                                             <th scope="col" ><input class="form-control" type="text" name="Edu_Status" required></th>
                                         
                                         </tr>
 										
 										<tr>
                                              <th scope="col">Date</th>
-                                             <th scope="col" ><input class="form-control" type="date" name="Edu_Date" ></th>
+                                             <th scope="col" ><input class="form-control" type="date" name="Edu_Date" required ></th>
                                         
                                         </tr>
 										<tr>
                                              <th scope="col">Attach Result Certificate</th>
-                                             <th scope="col" ><input class="form-control" type="file" name="Edu_Cert" required></th>
+                                             <th scope="col" ><input class="form-control" type="file" name="Edu_Cert" required ></th>
                                         
                                         </tr>
 										
@@ -407,7 +414,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
                             </div>
                             </div>
                             <div class="modal-footer">
-							<input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Add" name="Submit"/>
+							<input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Add" name="Submit" />
 							<a style="border-radius: 8px;" class="btn btn-primary" href="education.php">Back</a>
 							
                             </div>

@@ -229,7 +229,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN acknowledgement ON userlist.user_Ic = acknowledgement.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 $reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
+   $row = $reslist->fetch_assoc();
 
  
   
@@ -265,7 +265,7 @@ $reslist = $db->query($qlist);
         while($rowlist = $reslist->fetch_assoc()) {        
             echo "<tr>";
 		
-            echo "<td ><a href=\"updateAck.php?acknowledgement_id=$rowlist[acknowledgement_id]\">Edit</a> | <a href=\"deleteAck.php?acknowledgement_id=$rowlist[acknowledgement_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
+            echo "<td ><a href=\"updateAck.php?acknowledgement_id=$rowlist[acknowledgement_id]\">Edit</a> | <a href=\"deleteAck.php?acknowledgement_id=$rowlist[acknowledgement_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>| <a href=\"verifyAck.php?acknowledgement_id=$rowlist[acknowledgement_id]\">Verify</a> </td>";      
         }
         ?>
 								</div>
@@ -286,33 +286,33 @@ $reslist = $db->query($qlist);
 											<tr>
 											
 												 <th scope="col"><label for="acknowledgement_1">i)&nbsp;Do not have any criminal record</label></th>
-												 <th scope="col" ><input class="form-control" type="radio"   name="acknowledgement_1" <?php if (isset($acknowledgement_1) && $acknowledgement_1=="Yes") echo "checked";?> value="yes" /></th>
-												 <th scope="col"><input class="form-control" type="radio"  name="acknowledgement_1" <?php if (isset($acknowledgement_1) && $acknowledgement_1=="No") echo "checked";?> value="no" /></th>
+												 <th scope="col" ><input class="form-control" type="radio"   name="acknowledgement_1" <?php if (isset($acknowledgement_1) && $acknowledgement_1=="Yes") echo "checked";?> value="yes" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
+												 <th scope="col"><input class="form-control" type="radio"  name="acknowledgement_1" <?php if (isset($acknowledgement_1) && $acknowledgement_1=="No") echo "checked";?> value="no" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
 
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="acknowledgement_2">ii)&nbsp;Never stopped / dismissed by the government</label></th>
-												 <th scope="col" ><input class="form-control" type="radio"  name="acknowledgement_2" <?php if (isset($acknowledgement_2) && $acknowledgement_2=="Yes") echo "checked";?> value="yes" /></th>
-												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_2" <?php if (isset($acknowledgement_2) && $acknowledgement_2=="No") echo "checked";?> value="no" /></th>
+												 <th scope="col" ><input class="form-control" type="radio"  name="acknowledgement_2" <?php if (isset($acknowledgement_2) && $acknowledgement_2=="Yes") echo "checked";?> value="yes" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
+												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_2" <?php if (isset($acknowledgement_2) && $acknowledgement_2=="No") echo "checked";?> value="no" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="acknowledgement_3">iii)&nbsp;Not a drug addict</label></th>
-												 <th scope="col" ><input class="form-control" type="radio"    name="acknowledgement_3" <?php if (isset($acknowledgement_3) && $acknowledgement_3=="Yes") echo "checked";?> value="yes" /></th>
-												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_3" <?php if (isset($acknowledgement_3) && $acknowledgement_3=="No") echo "checked";?> value="no" /></th>
+												 <th scope="col" ><input class="form-control" type="radio"    name="acknowledgement_3" <?php if (isset($acknowledgement_3) && $acknowledgement_3=="Yes") echo "checked";?> value="yes" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
+												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_3" <?php if (isset($acknowledgement_3) && $acknowledgement_3=="No") echo "checked";?> value="no" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
 											</tr>
 										 
 											<tr>
 												 <th scope="col"><label for="acknowledgement_4">iv)&nbsp;Has no foreign citizenship</label></th>
-												 <th scope="col" ><input class="form-control" type="radio"  name="acknowledgement_4" <?php if (isset($acknowledgement_4) && $acknowledgement_4=="Yes") echo "checked";?> value="yes" /></th>
-												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_4" <?php if (isset($acknowledgement_4) && $acknowledgement_4=="No") echo "checked";?> value="no" /></th>
+												 <th scope="col" ><input class="form-control" type="radio"  name="acknowledgement_4" <?php if (isset($acknowledgement_4) && $acknowledgement_4=="Yes") echo "checked";?> value="yes" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
+												 <th scope="col"><input class="form-control" type="radio"   name="acknowledgement_4" <?php if (isset($acknowledgement_4) && $acknowledgement_4=="No") echo "checked";?> value="no" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="acknowledgement_5">v)&nbsp;Not a bankrupt</label></th>
-												 <th scope="col" ><input class="form-control" type="radio" name="acknowledgement_5" <?php if (isset($acknowledgement_5) && $acknowledgement_5=="Yes") echo "checked";?> value="yes" /></th>
-												 <th scope="col"><input class="form-control" type="radio"  name="acknowledgement_5" <?php if (isset($acknowledgement_5) && $acknowledgement_5=="No") echo "checked";?> value="no" /></th>
+												 <th scope="col" ><input class="form-control" type="radio" name="acknowledgement_5" <?php if (isset($acknowledgement_5) && $acknowledgement_5=="Yes") echo "checked";?> value="yes" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
+												 <th scope="col"><input class="form-control" type="radio"  name="acknowledgement_5" <?php if (isset($acknowledgement_5) && $acknowledgement_5=="No") echo "checked";?> value="no" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></th>
 											</tr>
 										</tbody>
 									</table>

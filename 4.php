@@ -3,6 +3,11 @@
 include '../../Final Year Project/sufee-master/config.php';
 $db = db_connect();
 session_start();
+ $Work_Experience_Id = null;
+    if ( !empty($_GET['Work_Experience_Id'])) {
+        $Work_Experience_Id = $_REQUEST['Work_Experience_Id'];
+    }
+	
 //fetching data in descending order (lastest entry first)
 //$result = mysql_query("SELECT * FROM work_experience ORDER BY id DESC"); // mysql_query is deprecated
 $result = mysqli_query($mysqli, "SELECT * FROM work_experience ORDER BY Work_Experience_Id DESC"); // using mysqli_query instead
@@ -230,7 +235,7 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN work_experience ON userlist.user_Ic = work_experience.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 $reslist = $db->query($qlist);
-  
+  $row = $reslist->fetch_assoc();
  
   
 ?>
@@ -251,7 +256,7 @@ $reslist = $db->query($qlist);
                 </div>
             </div>
         </div>
-    <form class="form-inline" action="AddExperience.php" method="post" enctype="multipart/form-data" >
+    <form class="form-inline" action="AddExperience.php?Work_Experience_Id=<?php echo $Work_Experience_Id?>" method="post" enctype="multipart/form-data" >
          <div class="content mt-3">
             <div class="animated">
 
@@ -259,9 +264,10 @@ $reslist = $db->query($qlist);
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
                         <strong class="card-title" style="font-size:px;">4. WORK EXPERIENCES</strong>
+						
                     </div>
                     <div class="card-body">
-							   <button style="border-radius: 8px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal">Add New Data</button>
+							   <button style="border-radius: 8px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal" <?php echo $row["Work_experience_checklist"] =1? "disabled ":""?>>Add New Data</button>
 							  <br/>
 							  <br/>
                                 <table class="table">
@@ -301,7 +307,7 @@ $reslist = $db->query($qlist);
             echo "<td style='width:10%' align='center'>".$rowlist['Work_End_Date']."</td>";
             echo "<td style='width:10%' align='center'>".$rowlist['Work_Contract']."</td>";
 			echo "<td style='width:10%' align='center'>".$rowlist['Reason_Stop']."</td>";
-            echo "<td style='width:20%' align='center'><a href=\"editExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\">Edit</a> | <a href=\"deleteExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";        
+            echo "<td style='width:20%' align='center'><a href=\"editExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\">Edit</a> | <a href=\"deleteExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> | <a href=\"verifyExe.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\">Verify</a> </td>";        
         }
         ?>
                                     </tbody>

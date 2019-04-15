@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2019 at 02:36 PM
+-- Generation Time: Apr 15, 2019 at 10:55 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -45,9 +45,7 @@ CREATE TABLE `acknowledgement` (
 --
 
 INSERT INTO `acknowledgement` (`acknowledgement_id`, `user_Ic`, `acknowledgement_1`, `acknowledgement_2`, `acknowledgement_3`, `acknowledgement_4`, `acknowledgement_5`, `Ack_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'no', 'no', 'no', 'no', 'no', 0, '2019-04-05 16:29:00'),
-(2, '960809080809', 'yes', 'yes', 'yes', 'yes', 'yes', 0, '2019-04-08 05:22:54'),
-(3, '960923015416', 'no', 'no', 'no', 'no', 'no', 0, '2019-04-11 17:25:32');
+(1, '961015086090', 'no', 'no', 'no', 'no', 'no', 1, '2019-04-14 10:54:02');
 
 -- --------------------------------------------------------
 
@@ -83,15 +81,6 @@ CREATE TABLE `applicant` (
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `applicant`
---
-
-INSERT INTO `applicant` (`Applicant_Id`, `user_Ic`, `Applicant_Name`, `Applicant_Add`, `Applicant_Email`, `Applicant_NoTel`, `Applicant_Age`, `Applicant_gender`, `Applicant_DOB`, `Applicant_POB`, `Applicant_Citizen`, `Applicant_Religion`, `Applicant_Nation`, `Applicant_MaritalStatus`, `Applicant_Height`, `Applicant_Weight`, `Applicant_NoHP`, `Applicant_VLC`, `Mom_Name`, `Mom_Ic`, `Dad_Name`, `Dad_Ic`, `Spouse_name`, `Applicant_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'CHNG SHU WEN', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya 84600 PAGOH, MUAR,JOHOR.', 'shuwen_1015@hotmail.com', 0, 23, 'female', '1996-10-15', 'TAIPING', 'MALAYSIAN', 'BUDDHA', 'CHINESE', 'SINGLE', 165, 49, 176650496, 'C', 'TOH SIEW GEOK', '650909085678', 'CHNG CHUAN HOCK', '590526085327', '', 0, '2019-04-05 16:10:01'),
-(2, '960809080809', 'LIM YI TING', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'shuwen_1015@hotmail.com', 176650496, 23, 'female', '1996-08-09', 'TAIPING', 'MALAYSIAN', 'BUDDHA', 'CHINESE', 'SINGLE', 167.9, 51.8, 176650496, 'C', 'LIM SWEE FANG', '660989012345', 'LOO KOH HUAT', '650978012678', '', 0, '2019-04-08 05:18:59'),
-(3, '960923015416', 'TOH SIEW GEOK', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'siewgeok0923@gmail.com', 176650496, 26, 'female', '2019-04-03', 'MUAR', 'MALAYSIAN', 'BUDDHA', 'CHINESE', 'MARRIED', 164, 59, 126202869, 'D', 'LIM SWEE FANG', '650909085678', 'LOO KOH HUAT', '590526085327', 'LOW LEE HUAT', 0, '2019-04-11 17:16:30');
-
 -- --------------------------------------------------------
 
 --
@@ -123,15 +112,6 @@ CREATE TABLE `cocuriculum` (
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cocuriculum`
---
-
-INSERT INTO `cocuriculum` (`Cocuriculum_Id`, `coco_level`, `user_Ic`, `Koko_Activity_Year`, `Koko_Activity_name`, `Koko_Activity_Cert`, `Cocuriculum_checklist`, `dateTime`) VALUES
-(1, 'School/University Level', '961015086090', 2017, 'HACKING', 'ic.pdf', 0, '2019-04-05 16:30:19'),
-(2, 'After graduation', '960809080809', 1990, 'HACKING', 'ic.pdf', 0, '2019-04-08 05:21:51'),
-(3, 'After graduation', '960923015416', 1990, 'kawat', 'ic.pdf', 0, '2019-04-11 17:24:02');
-
 -- --------------------------------------------------------
 
 --
@@ -145,6 +125,7 @@ CREATE TABLE `decision` (
   `app_post1` varchar(50) NOT NULL,
   `Status_1` varchar(15) DEFAULT NULL,
   `Status_2` varchar(50) NOT NULL,
+  `Is_active` varchar(12) NOT NULL,
   `Officer_Name` varchar(50) NOT NULL,
   `date_Officer` date NOT NULL,
   `Approval_status` varchar(10) NOT NULL DEFAULT 'In Process',
@@ -155,10 +136,36 @@ CREATE TABLE `decision` (
 -- Dumping data for table `decision`
 --
 
-INSERT INTO `decision` (`Decision_Id`, `Applicant_Name`, `user_Ic`, `app_post1`, `Status_1`, `Status_2`, `Officer_Name`, `date_Officer`, `Approval_status`, `dateTime`) VALUES
-(1, 'CHNG SHU WEN ', '961015086090', 'DS45 LECTURER', 'Interview', '', 'ALI', '2018-12-04', 'Approval', '2019-04-06 18:30:01'),
-(8, 'LIM YI TING ', '960809080809', 'DS51 SENIOR LECTURER', 'Interview', '', 'koit', '2018-12-05', 'Approval', '2019-04-08 06:17:17'),
-(10, 'TOH SIEW GEOK ', '960923015416', 'DS53 PROFESOR MADYA', 'Waiting List', 'YOU LESS THE CERTIFICATE', 'hui yee', '2018-12-19', 'Approval', '2019-04-11 18:09:02');
+INSERT INTO `decision` (`Decision_Id`, `Applicant_Name`, `user_Ic`, `app_post1`, `Status_1`, `Status_2`, `Is_active`, `Officer_Name`, `date_Officer`, `Approval_status`, `dateTime`) VALUES
+(1, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:42:00'),
+(2, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:43:31'),
+(3, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:45:42'),
+(4, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:46:11'),
+(5, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:46:38'),
+(6, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:48:56'),
+(7, '', '', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:49:24'),
+(8, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:50:25'),
+(9, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:50:35'),
+(10, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:55:56'),
+(11, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:57:21'),
+(12, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-14 15:57:48'),
+(13, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:10:43'),
+(14, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:16:29'),
+(15, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:17:58'),
+(16, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:20:04'),
+(17, 'Applicant_Name', '961015086090', 'Applicant_Name', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:20:53'),
+(18, '', '961015086090', 'Applicant_Name', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:21:41'),
+(19, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:22:46'),
+(20, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:28:37'),
+(21, '', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:29:12'),
+(22, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:29:50'),
+(23, 'CHNG SHU WEN  ', '961015086090', 'DS51 SENIOR LECTURER', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:33:27'),
+(24, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 05:44:27'),
+(25, 'Applicant_Name', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 06:15:12'),
+(26, '', '961015086090', 'app_post1', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 06:15:50'),
+(27, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 06:17:30'),
+(28, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 06:17:47'),
+(29, '', '961015086090', '', 'In Process', '', '1', '', '0000-00-00', 'In Process', '2019-04-15 06:24:37');
 
 -- --------------------------------------------------------
 
@@ -177,13 +184,6 @@ CREATE TABLE `decision_interview` (
   `criteria_5` int(2) NOT NULL,
   `total` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `decision_interview`
---
-
-INSERT INTO `decision_interview` (`decision_Interview_id`, `Applicant_Name`, `user_Ic`, `criteria_1`, `criteria_2`, `criteria_3`, `criteria_4`, `criteria_5`, `total`) VALUES
-(1, 'LIM YI TING  ', '960809080809', 40, 30, 10, 10, 10, 100);
 
 -- --------------------------------------------------------
 
@@ -211,15 +211,8 @@ CREATE TABLE `education` (
 --
 
 INSERT INTO `education` (`Education_detail_Id`, `user_Ic`, `Edu_Type`, `Edu_School`, `Edu_Year`, `Edu_Level`, `Edu_Specialize`, `Edu_Status`, `Edu_Date`, `Edu_Cert`, `Edu_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'Primary', 'SJK(C)AI HWA', 2008, '5A', '', 'PASS', '2008-12-25', 'ic.pdf', 0, '2019-04-05 16:12:26'),
-(2, '961015086090', 'SRP/PMR', 'SMK SARS1', 2011, '5A3B', 'SCIENCE', 'PASS', '2013-12-24', 'ic.pdf', 0, '2019-04-05 16:14:57'),
-(3, '961015086090', 'SPM/SPVM', 'SMK SARS1', 2013, '1A+1A2A-4B+2B', 'SCIENCE', 'PASS', '2013-12-24', 'ic.pdf', 0, '2019-04-05 16:14:29'),
-(4, '961015086090', 'STPM/STAM', 'HIGH SCHOOL MUAR', 2015, '3.00', 'SCIENCE STREAM', 'PASS', '2015-11-24', 'ic.pdf', 0, '2019-04-05 16:15:52'),
-(5, '961015086090', 'University/College/Polytechnic', 'UTHM', 2018, '3.87', 'IT', 'PASS', '2019-07-01', 'ic.pdf', 0, '2019-04-05 16:16:56'),
-(6, '960809080809', 'Primary', 'SJK(C)AI HWA', 1991, '5A', 'BIO', 'PASS', '2019-04-10', 'ic.pdf', 0, '2019-04-08 05:19:16'),
-(7, '960809080809', 'SRP/PMR', 'SMK SARS1', 1990, '10A', 'BIO', 'PASS', '2019-04-22', 'ic.pdf', 0, '2019-04-08 05:19:33'),
-(8, '960923015416', 'Primary', 'SJK(C)AI HWA', 1990, '5A', 'BIO', 'Expert', '2019-04-10', 'HR_Job_Application Form_IFSCv5.pdf', 0, '2019-04-11 17:16:47'),
-(9, '960923015416', 'STPM/STAM', 'HIGH SCHOOL MUAR', 1990, '4.00', 'BIO', 'PASS', '2019-04-10', 'HR_Job_Application Form_IFSCv5.pdf', 0, '2019-04-11 17:22:41');
+(1, '961015086090', 'Primary', 'SMK SARS1', 1990, '10A', 'BIO', 'PASS', '2019-04-09', 'RESUME SAMPLE 1.pdf', 1, '2019-04-14 10:35:30'),
+(2, '961015086090', 'SRP/PMR', 'SJK(C)AI HWA', 1990, '10A', 'BIO', 'PASS', '2019-04-02', 'FullReport v5.pdf', 1, '2019-04-14 10:35:49');
 
 -- --------------------------------------------------------
 
@@ -260,16 +253,6 @@ CREATE TABLE `notify` (
   `notify_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `notify`
---
-
-INSERT INTO `notify` (`Notify_Id`, `Applicant_Name`, `user_Ic`, `message`, `interview_date`, `notify_date`) VALUES
-(2, 'CHNG SHU WEN  ', '961015086090', 'YOU ARE SELECTED', '0000-00-00', '2019-04-06 18:14:33'),
-(10, 'LIM YI TING  ', '960809080809', 'hi', '2019-04-03', '2019-04-08 06:15:54'),
-(11, 'TOH SIEW GEOK  ', '960923015416', 'HI', '2019-04-25', '2019-04-11 17:30:11'),
-(12, 'LIM YI TING  ', '960809080809', 'hi', '0000-00-00', '2019-04-11 18:24:41');
-
 -- --------------------------------------------------------
 
 --
@@ -284,16 +267,6 @@ CREATE TABLE `position` (
   `Position_checklist` int(2) NOT NULL DEFAULT '0',
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `position`
---
-
-INSERT INTO `position` (`Choose_Position_Id`, `user_Ic`, `faculty`, `app_post1`, `Position_checklist`, `dateTime`) VALUES
-(2, '960809080809', 'FTK', 'DS51 SENIOR LECTURER', 0, '2019-04-08 05:17:51'),
-(3, '960923015416', 'FTK', 'DS53 PROFESOR MADYA', 0, '2019-04-11 17:15:17'),
-(8, '971123015539', 'FAST', 'DS53 PROFESOR MADYA', 1, '2019-04-12 12:28:51'),
-(11, '961015086090', 'FKMP', 'DS53 PROFESOR MADYA', 0, '2019-04-12 12:35:16');
 
 -- --------------------------------------------------------
 
@@ -341,9 +314,7 @@ CREATE TABLE `self_reference` (
 --
 
 INSERT INTO `self_reference` (`self_reference_id`, `user_Ic`, `person1`, `person2`, `add1`, `add2`, `job1`, `job2`, `tel1`, `tel2`, `self_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'AKON', 'ALICIA', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'CEO', 'ACCOUNTANT', 176650496, 176650496, 0, '2019-04-05 16:28:47'),
-(2, '960809080809', 'ANDREW', 'ADMON', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'CEO', 'CEO', 176650496, 176650496, 0, '2019-04-08 05:22:43'),
-(3, '960923015416', 'AJET', 'AKEN', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'AUDITOR', 'CEO', 176650496, 176650496, 0, '2019-04-11 17:24:58');
+(1, '961015086090', 'AKON', 'ADMON', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'No 39 Jalan Jaya 2/6 Taman Pagoh Jaya', 'accountant', 'ENGINEER', 176650496, 176650496, 1, '2019-04-14 10:40:57');
 
 -- --------------------------------------------------------
 
@@ -359,51 +330,6 @@ CREATE TABLE `subject` (
   `subject` varchar(50) NOT NULL,
   `gred` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `subject`
---
-
-INSERT INTO `subject` (`subject_id`, `Education_detail_Id`, `user_Ic`, `Edu_Type`, `subject`, `gred`) VALUES
-(1, 1, '961015086090', 'Primary', 'BAHASA CINA', 'E'),
-(2, 1, '961015086090', 'Primary', 'BAHASA MELAYU', 'E'),
-(3, 1, '961015086090', 'Primary', 'BAHASA INGERRIS', 'A+'),
-(4, 1, '961015086090', 'Primary', 'SCIENCE', 'A-'),
-(5, 1, '961015086090', 'Primary', 'MATH', 'C-'),
-(6, 2, '961015086090', 'SRP/PMR', 'BAHASA CINA', 'B+'),
-(7, 2, '961015086090', 'SRP/PMR', 'BAHASA MELAYU', 'A'),
-(8, 2, '961015086090', 'SRP/PMR', 'BAHASA INGERRIS', 'B+'),
-(9, 2, '961015086090', 'SRP/PMR', 'MATH', 'A+'),
-(10, 2, '961015086090', 'SRP/PMR', 'GEOGRAFI', 'A-'),
-(11, 2, '961015086090', 'SRP/PMR', 'SEJARAH', 'A-'),
-(12, 3, '961015086090', 'SPM/SPVM', 'BAHASA CINA', 'B+'),
-(13, 3, '961015086090', 'SPM/SPVM', 'BAHASA MELAYU', 'A'),
-(14, 3, '961015086090', 'SPM/SPVM', 'BAHASA INGERRIS', 'B+'),
-(15, 3, '961015086090', 'SPM/SPVM', 'PHYSICS', 'B+'),
-(16, 3, '961015086090', 'SPM/SPVM', 'CHEMISTRY', 'B+'),
-(17, 3, '961015086090', 'SPM/SPVM', 'BIOLOGY', 'B+'),
-(18, 3, '961015086090', 'SPM/SPVM', 'MATHEMATICS', 'A+'),
-(19, 3, '961015086090', 'SPM/SPVM', 'ADDITIONAL MATHEMATICS', 'A-'),
-(20, 3, '961015086090', 'SPM/SPVM', 'PENDIDIKAN MORAL', 'A'),
-(21, 4, '961015086090', 'STPM/STAM', 'CHEMISTRY', 'B+'),
-(22, 4, '961015086090', 'STPM/STAM', 'PENGAJIAN AM', 'B+'),
-(23, 4, '961015086090', 'STPM/STAM', 'MATH T', 'B+'),
-(24, 5, '961015086090', 'University/College/Polytechnic', 'SADAM', 'A'),
-(25, 5, '961015086090', 'University/College/Polytechnic', 'PROGRAMMING', 'A'),
-(26, 5, '961015086090', 'University/College/Polytechnic', 'OPERATING SYSTEM', 'A'),
-(27, 5, '961015086090', 'University/College/Polytechnic', 'VISUAL PROGARMMING', 'B+'),
-(28, 6, '960809080809', 'Primary', 'SCIENCE', 'A+'),
-(29, 6, '960809080809', 'Primary', 'GERMAN', 'A+'),
-(30, 7, '960809080809', 'SRP/PMR', 'GEOGRAFI', 'A+'),
-(31, 7, '960809080809', 'SRP/PMR', 'PENDIDIKAN MORAL', 'A+'),
-(32, 7, '960809080809', 'SRP/PMR ', 'BAHASA CINA', 'A+'),
-(33, 6, '960809080809', 'Primary ', 'BAHASA CINA', 'A+'),
-(34, 6, '960809080809', 'Primary', 'BAHASA MELAYU', 'E'),
-(35, 6, '960809080809', 'SRP/PMR', 'PENULISAN', 'A+'),
-(36, 6, '960809080809', 'SRP/PMR', 'BAHASA CINA', 'D'),
-(37, 6, '960809080809', 'SRP/PMR', 'BAHASA CINA', 'A'),
-(40, 8, '960923015416', 'Primary', 'GERMAN', 'A-'),
-(41, 9, '960923015416', 'STPM/STAM', 'PHYSICS', 'A+');
 
 -- --------------------------------------------------------
 
@@ -429,9 +355,7 @@ CREATE TABLE `training` (
 --
 
 INSERT INTO `training` (`Training_Id`, `user_Ic`, `Training_Name`, `Training_date_start`, `Training_date_end`, `Training_Organizer`, `Training_Place`, `Training_Result`, `Training_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'NX FORCE', '2019-04-03', '2019-10-08', 'CYBER SECURITY', 'SUBANG JAYA', 'PASS', 0, '2019-04-05 16:28:27'),
-(2, '960809080809', 'CISCO', '2019-04-17', '2019-04-19', 'KPMG', 'KL CONVENTION CENTRE', 'PASS', 0, '2019-04-08 05:22:24'),
-(3, '960923015416', 'CISCO', '2019-04-18', '2019-04-03', 'subang', 'KL CONVENTION CENTRE', 'FAIL', 0, '2019-04-11 17:25:19');
+(1, '961015086090', 'CISCO', '2019-04-25', '2019-04-25', 'cyber city', 'SUBANG JAYA', 'FAIL', 1, '2019-04-14 10:40:36');
 
 -- --------------------------------------------------------
 
@@ -455,17 +379,8 @@ CREATE TABLE `userlist` (
 --
 
 INSERT INTO `userlist` (`user_id`, `name`, `user_Ic`, `emailAdd`, `password`, `confirmpassword`, `selected_val`, `dateTime`) VALUES
-(1, 'CHNG SHU WEN', '961015086090', 'shuwen_1015@hotmail.com', '01cfcd4f6b8770febfb40cb906715822', '12345', 'applicant', '2019-04-12 10:04:25'),
-(2, 'ADMIN', '941015086090', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'manager', '2019-04-12 10:49:31'),
-(3, 'officer5', '951014086090', 'officer1@gmail.com', '12345', '12345', 'officer', '2019-04-10 17:37:03'),
-(4, 'LIM YI TING', '960809080809', 'yiting@gmail.com', '12345', '12345', 'applicant', '2019-04-02 20:57:50'),
-(5, 'kelvin lim', '961014141414', 'kelvin@gmail.com', '12345', '12345', 'applicant', '2019-04-03 12:23:42'),
-(6, 'FILA', '961017086090', 'fila@gmail.com', '12345', '12345', 'applicant', '2019-04-10 15:58:43'),
-(7, 'officer2', '950809080809', 'officer2@gmail.com', '12345', '12345', 'officer', '2019-04-10 17:23:02'),
-(8, 'officer3', '951014086090', 'officer3@gmail.com', '12345', '12345', 'officer', '2019-04-10 17:23:32'),
-(9, 'officer4', '961012086090', 'officer4@gmail.com', '12345', '12345', 'officer', '2019-04-10 17:33:03'),
-(10, 'TOH SIEW GEOK', '960923015416', 'siewgeok0923@gmail.com', '12345', '12345', 'applicant', '2019-04-11 17:14:59'),
-(14, 'AHMAD KAMIL KAMARUDDIN MALIK', '971123015539', 'kamil@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'applicant', '2019-04-12 12:09:37');
+(1, 'ADMIN', '941015086090', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'manager', '2019-04-14 10:17:29'),
+(2, 'CHNG SHU WEN', '961015086090', 'shuwen_1015@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '827ccb0eea8a706c4c34a16891f84e7b', 'applicant', '2019-04-14 10:17:47');
 
 -- --------------------------------------------------------
 
@@ -481,7 +396,7 @@ CREATE TABLE `work_experience` (
   `Applicant_Month_Salary` float NOT NULL,
   `Work_Start_Date` date NOT NULL,
   `Work_End_Date` date NOT NULL,
-  `Work_Contract` int(11) NOT NULL,
+  `Work_Contract` varchar(5) NOT NULL,
   `Reason_Stop` varchar(100) NOT NULL,
   `Work_experience_checklist` int(2) NOT NULL DEFAULT '0',
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -492,9 +407,7 @@ CREATE TABLE `work_experience` (
 --
 
 INSERT INTO `work_experience` (`Work_Experience_Id`, `user_Ic`, `Employer_Name_Add`, `Applicant_Post`, `Applicant_Month_Salary`, `Work_Start_Date`, `Work_End_Date`, `Work_Contract`, `Reason_Stop`, `Work_experience_checklist`, `dateTime`) VALUES
-(1, '961015086090', 'CYBER SECURITY', 'MANAGER', 5000, '2016-02-02', '2018-05-08', 0, 'FOR FUN', 0, '2019-04-05 16:27:25'),
-(2, '960809080809', 'CYBER SECURITY', 'MANAGER', 7999.66, '2019-04-16', '2019-04-26', 0, 'FOR FUN', 0, '2019-04-08 05:22:10'),
-(3, '960923015416', 'CYBER SECURITY', 'MANAGER', 6000, '2019-04-10', '2019-04-24', 0, 'FOR FUN', 0, '2019-04-11 17:24:25');
+(1, '961015086090', 'CYBER SECURITY', 'manager', 6000, '2019-04-18', '2019-04-10', 'NO', 'FOR FUN', 1, '2019-04-14 10:39:29');
 
 --
 -- Indexes for dumped tables
@@ -604,13 +517,13 @@ ALTER TABLE `work_experience`
 -- AUTO_INCREMENT for table `acknowledgement`
 --
 ALTER TABLE `acknowledgement`
-  MODIFY `acknowledgement_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `acknowledgement_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `applicant`
 --
 ALTER TABLE `applicant`
-  MODIFY `Applicant_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Applicant_Id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `approval`
@@ -622,25 +535,25 @@ ALTER TABLE `approval`
 -- AUTO_INCREMENT for table `cocuriculum`
 --
 ALTER TABLE `cocuriculum`
-  MODIFY `Cocuriculum_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Cocuriculum_Id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `decision`
 --
 ALTER TABLE `decision`
-  MODIFY `Decision_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Decision_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `decision_interview`
 --
 ALTER TABLE `decision_interview`
-  MODIFY `decision_Interview_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `decision_Interview_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `Education_detail_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Education_detail_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `job_requirement`
@@ -652,13 +565,13 @@ ALTER TABLE `job_requirement`
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `Notify_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Notify_Id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
-  MODIFY `Choose_Position_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Choose_Position_Id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `position_level`
@@ -670,31 +583,31 @@ ALTER TABLE `position_level`
 -- AUTO_INCREMENT for table `self_reference`
 --
 ALTER TABLE `self_reference`
-  MODIFY `self_reference_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `self_reference_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `subject_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `training`
 --
 ALTER TABLE `training`
-  MODIFY `Training_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Training_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userlist`
 --
 ALTER TABLE `userlist`
-  MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `work_experience`
 --
 ALTER TABLE `work_experience`
-  MODIFY `Work_Experience_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Work_Experience_Id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

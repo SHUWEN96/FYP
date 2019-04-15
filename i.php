@@ -87,7 +87,8 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 	  INNER JOIN position ON userlist.user_Ic = position.user_Ic 
 	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 $reslist = $db->query($qlist);
-  
+  $row = $reslist->fetch_assoc();
+    
  
   
 ?>
@@ -289,12 +290,15 @@ $reslist = $db->query($qlist);
                             <div class="card-header">
 							 <i class="mr-2 fa fa-align-justify"></i>
                                 <strong class="card-title" style="font-size:px;">Job position to be applied (according to the priority of applicant)</strong>
+								
+									
 								<?php
 								//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-								while($rowlist = $reslist->fetch_assoc()) {        
-									echo "<tr>";
+								while($rowlist = $reslist->fetch_assoc()) { 
 								
-									echo "<td ><a href=\"updatePosition.php?Choose_Position_Id=$rowlist[Choose_Position_Id]\">Edit</a> | <a href=\"deletePosition.php?Choose_Position_Id=$rowlist[Choose_Position_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>
+									echo "<tr>";
+									echo "<td ><a href=\"updatePosition.php?Choose_Position_Id=$rowlist[Choose_Position_Id]\" >Edit</a> | <a href=\"deletePosition.php?Choose_Position_Id=$rowlist[Choose_Position_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a>
+									|<a href=\"verifyPost.php?Choose_Position_Id=$rowlist[Choose_Position_Id]\">Verify</a> 
 									
 									</td>";      
 								}
@@ -308,7 +312,7 @@ $reslist = $db->query($qlist);
 									
                                         <tr>
                                             <th scope="col"><label for="faculty">Faculty</label></th>
-                                            <th scope="col"><select name="faculty" class="form-control" >
+                                            <th scope="col"><select name="faculty" class="form-control"  <?php echo $row["Position_checklist"] =1? "disabled ":""?> >
                                                                  <option value=""></option>
                                                                  <option value="FKAAS">Faculty of Civil and Environmental Engineering (FKAAS)</option>
                                                                  <option value="FKEE">Faculty of Electrical and Electronic Engineering (FKEE)</option>
@@ -323,7 +327,7 @@ $reslist = $db->query($qlist);
                               
                                         <tr>
                                             <th rowspan="2" scope="col"><label for="grade">Grade/Job Position</label></th>
-                                            <th scope="col"><select id="app_post1" class="form-control" name="app_post1">
+                                            <th scope="col"><select id="app_post1" class="form-control" name="app_post1" <?php echo $row["Position_checklist"] =1?"disabled ":""?>>
                                                  <option value=""></option>
 												 <option value="DS45 LECTURER">DS45 LECTURER</option>
                                                  <option value="DS51 SENIOR LECTURER">DS51 SENIOR LECTURER</option>
@@ -341,7 +345,7 @@ $reslist = $db->query($qlist);
                     </div>
                 </div>
             </div><!-- .animated -->
-			<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert"/></div>
+			<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert" <?php echo $row["Position_checklist"] =1?"disabled ":""?>/></div>
 				<div style='float:right;'><nav aria-label="...">
   <ul class="pagination">
    

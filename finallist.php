@@ -358,8 +358,10 @@ $('#verify').click(function(){
 	
 return false;
 }
+
 )
 </script>
+
 	</body>
 
 	</html>

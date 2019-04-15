@@ -1,6 +1,5 @@
 		<?php
-	
-		
+
 			$Applicant_Id = null;
 if ( !empty($_GET['Applicant_Id'])) {
 	$Applicant_Id = $_REQUEST['Applicant_Id'];
@@ -14,12 +13,12 @@ if ( !empty($_GET['Applicant_Id'])) {
 					$db = db_connect();
 					session_start();
 					$Applicant_Name=$_SESSION['SESS_APPNAME'];
-					$qlist = "SELECT * FROM position ";
+					$app_post1=$_SESSION['SESS_POST'];
+					$qlist = "SELECT * FROM position LEFT JOIN applicant ON position.user_Ic = applicant.user_Ic";
 					$reslist = $db->query($qlist);
 
 					 while($rowlist = $reslist->fetch_assoc()) {        
 							   $user_Ic=$rowlist["user_Ic"];
-							   $app_post1=$rowlist["app_post1"];
 							  
 							}
 						if(isset($_POST['Insert'])) { 	
