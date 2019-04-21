@@ -26,9 +26,9 @@ $acknowledgement_5 = $_POST['acknowledgement_5'];
   
 // if successfully insert data into database, displays message "Successful". 
 $result = mysqli_query($link, $sql)or die("Failed to query database".mysqli_error($link));
-$message = "Insert Successfully.Application Form fill up successfully and refered your status from officer decision within 1 week";
+$message = "Insert Successfully";
 		echo "<script type='text/javascript'>alert('$message');</script>";
-	echo "<script> location.href='applicant.php'</script>";
+	echo "<script> location.href='7.php'</script>";
 	
 		exit;
 	}

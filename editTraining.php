@@ -58,7 +58,7 @@ if(isset($_POST['update'])) {
       $result = mysqli_query($mysqli, "UPDATE training SET Training_Name='$Training_Name',Training_date_start='$Training_date_start',Training_date_end='$Training_date_end',Training_Organizer='$Training_Organizer',Training_Place='$Training_Place',Training_Result='$Training_Result' WHERE Training_Id=$Training_Id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='5.php'>View Result</a>";
+        echo "<br/><a href='5.php'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
     }
 }	
 ?>

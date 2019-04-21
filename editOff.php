@@ -39,7 +39,7 @@ if(isset($_POST['update'])) {
        $result = mysqli_query($mysqli, "UPDATE userlist SET name='$name',user_Ic='$user_Ic',emailAdd='$emailAdd' WHERE user_id=$user_id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='registerOff.php'>View Result</a>";
+        echo "<br/><a href='registerOff.php'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
     }
 }
 ?>

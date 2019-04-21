@@ -108,7 +108,7 @@ if(isset($_POST['update'])) {
        $result = mysqli_query($mysqli, "UPDATE education SET Edu_Type='$Edu_Type',Edu_School='$Edu_School',Edu_Year='$Edu_Year',Edu_Level='$Edu_Level',Edu_Specialize='$Edu_Specialize',Edu_Status='$Edu_Status',Edu_Date='$Edu_Date',Edu_Cert='$filename' WHERE Education_detail_Id=$Education_detail_Id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='education.php'>View Result</a>";
+        echo "<br/><a href='education.php'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
     }
 }
 ?>

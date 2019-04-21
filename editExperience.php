@@ -64,7 +64,7 @@ if(isset($_POST['update'])) {
        $result = mysqli_query($mysqli, "UPDATE work_experience SET Employer_Name_Add='$Employer_Name_Add',Applicant_Post='$Applicant_Post',Applicant_Month_Salary='$Applicant_Month_Salary',Work_Start_Date='$Work_Start_Date',Work_End_Date='$Work_End_Date',Work_Contract='$Work_Contract',Reason_Stop='$Reason_Stop' WHERE Work_Experience_Id=$Work_Experience_Id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='4.php'>View Result</a>";
+        echo "<br/><a href='4.php'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
     }
 }		
 ?>

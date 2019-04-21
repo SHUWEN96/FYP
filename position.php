@@ -32,7 +32,7 @@ $Applicant_post2 = $_POST['Applicant_post2'];
 $message = "Insert Successfully.";
 
 		echo "<script type='text/javascript'>alert('$message');</script>";
-	echo "<script> location.href='i.html'; </script>";
+	echo "<script> location.href='i.php'; </script>";
 		exit;
 		
 }

@@ -76,14 +76,9 @@ $reslist = $db->query($qlist);
                                     <tbody>
 									
 										<?php  	  
-									$link = mysqli_connect("localhost", "root", "");
-
-									mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-									mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+									
 									 $qlist = 'SELECT * FROM decision_interview WHERE user_Ic= "'.$id1.'"'; 
 					 
-					$reslist = $db->query($qlist);
-									
 									$reslist = $db->query($qlist);
 									
 									 while($rowlist = $reslist->fetch_assoc()) { 
@@ -142,7 +137,7 @@ $reslist = $db->query($qlist);
 							
 
 							<div class="modal-footer">
-							<a style="border-radius: 8px;" class="btn btn-primary" href='javascript:history.back(1);'>Back</a>
+							<a style="border-radius: 8px;" class="btn btn-primary" href='javascript:history.back(1);'>Done</a>
 							
                           
 							

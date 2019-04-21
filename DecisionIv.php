@@ -146,8 +146,8 @@ $query ="INSERT INTO decision_interview(Applicant_Name,user_Ic,criteria_1,criter
                                 </div>
                             </div>
 							<div class="modal-footer">
-							  <button style="border-radius: 8px;" name="submit" class="btn btn-success" type="submit">Submit</button>
-							<a style="border-radius: 8px;" class="btn btn-primary" href='javascript:history.back(1);'>Back</a>
+							 
+							<a style="border-radius: 8px;" class="btn btn-primary" href='javascript:history.back(1);'>Done</a>
 							
                             </div>
                         </div>

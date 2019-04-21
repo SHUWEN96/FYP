@@ -55,7 +55,7 @@ session_start();
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
 								<i class="fa fa-bars"></i>
 							</button>
-							  <a class="navbar-brand" href="officer.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
+							  <a class="navbar-brand" href="applicant.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
 						</div>
 
 						<div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -122,117 +122,34 @@ session_start();
 
 				<div class="header-menu">
 
-					<div class="col-sm-7">
-						<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-						<div class="header-left">
-							<button class="search-trigger"><i class="fa fa-search"></i></button>
-							<div class="form-inline">
-								<form class="search-form">
-									<input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-									<button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-								</form>
-							</div>
-
-							<div class="dropdown for-notification">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-bell"></i>
-									<span class="count bg-danger">5</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="notification">
-									<p class="red">You have 3 Notification</p>
-									<a class="dropdown-item media bg-flat-color-1" href="#">
-									<i class="fa fa-check"></i>
-									<p>Server #1 overloaded.</p>
-								</a>
-									<a class="dropdown-item media bg-flat-color-4" href="#">
-									<i class="fa fa-info"></i>
-									<p>Server #2 overloaded.</p>
-								</a>
-									<a class="dropdown-item media bg-flat-color-5" href="#">
-									<i class="fa fa-warning"></i>
-									<p>Server #3 overloaded.</p>
-								</a>
+							<div class="col-sm-7">
+								<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+								<div class="header-left">
 								</div>
 							</div>
-
-							<div class="dropdown for-message">
-								<button class="btn btn-secondary dropdown-toggle" type="button"
-									id="message"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="ti-email"></i>
-									<span class="count bg-primary">9</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="message">
-									<p class="red">You have 4 Mails</p>
-									<a class="dropdown-item media bg-flat-color-1" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Jonathan Smith</span>
-										<span class="time float-right">Just now</span>
-											<p>Hello, this is an example msg</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-4" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Jack Sanders</span>
-										<span class="time float-right">5 minutes ago</span>
-											<p>Lorem ipsum dolor sit amet, consectetur</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-5" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Cheryl Wheeler</span>
-										<span class="time float-right">10 minutes ago</span>
-											<p>Hello, this is an example msg</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-3" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Rachel Santos</span>
-										<span class="time float-right">15 minutes ago</span>
-											<p>Lorem ipsum dolor sit amet, consectetur</p>
-									</span>
-								</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					    <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
+							<div class="col-sm-5">
+								<div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                           
+								</div>
 
-                            
-                        </div>
-                    </div>
+							</div>
+						</div>
 
+					<?php  	  
 
-                </div>
-            </div>
+					 $qlist = "SELECT * FROM userlist 
+						  INNER JOIN self_reference ON userlist.user_Ic = self_reference.user_Ic 
+						  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+					$reslist = $db->query($qlist);
+					$reslist2 = $db->query($qlist);
+					   $row = $reslist->fetch_assoc();
 
-<?php  	  
-$link = mysqli_connect("localhost", "root", "");
-
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN self_reference ON userlist.user_Ic = self_reference.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-$reslist = $db->query($qlist);
-   $row = $reslist->fetch_assoc();
-
- 
-  
-?>
+					 
+					  
+					?>
 			</header><!-- /header -->
 			<!-- Header-->
 		   <div class="breadcrumbs">
@@ -263,9 +180,8 @@ $reslist = $db->query($qlist);
 							 <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
                         <strong class="card-title" style="font-size:px;">6. SELF REFERENCE</strong>
-						<?php
-								//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
+						<?php 
+        while($rowlist = $reslist2->fetch_assoc()) {        
             echo "<tr>";
 		
             echo "<td ><a href=\"updateSelf.php?self_reference_id=$rowlist[self_reference_id]\">Edit</a> | <a href=\"deleteSelf.php?self_reference_id=$rowlist[self_reference_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> |<a href=\"verifySelf.php?self_reference_id=$rowlist[self_reference_id]\">Verify</a> </td>";      
@@ -280,25 +196,25 @@ $reslist = $db->query($qlist);
 										<tbody>
 											<tr>
 												 <th scope="col"><label for="person1">Name</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="person1" name="person1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="person1" name="person1" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="add1">Address</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="add1" name="add1" size="30" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="add1" name="add1" size="30" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="job1">Job</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="job1" name="job1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="job1" name="job1" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr> 
 												 <th scope="col"><label for="tel1">H/P Number</label></th>
-												 <th scope="col"><input class="form-control" type="text" id="tel1" name="tel1" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col"><input class="form-control" type="text" id="tel1" name="tel1" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											 </tr>
 										 
 											<tr> 
@@ -322,25 +238,25 @@ $reslist = $db->query($qlist);
 										<tbody>
 											<tr>
 												 <th scope="col"><label for="person2">Name</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="person2" name="person2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="person2" name="person2" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="add2">Address</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="add2" name="add2" size="30" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="add2" name="add2" size="30" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr>
 												 <th scope="col"><label for="job2">Job</label></th>
-												 <th scope="col" ><input class="form-control" type="text" id="job2" name="job2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col" ><input class="form-control" type="text" id="job2" name="job2" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											
 											</tr>
 											
 											<tr> 
 												 <th scope="col"><label for="tel2">H/P Number</label></th>
-												 <th scope="col"><input class="form-control" type="text" id="tel2" name="tel2" size="10" required <?php echo $row["self_checklist"] =1? "disabled ":""?>></label></th>
+												 <th scope="col"><input class="form-control" type="text" id="tel2" name="tel2" size="10" required <?php echo $row["self_checklist"] ==1? "disabled ":""?>></label></th>
 											 </tr>
 										 
 											<tr> 
@@ -352,7 +268,7 @@ $reslist = $db->query($qlist);
 						
 					</div>
 				</div><!-- .animated -->
-				<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert" <?php echo $row["self_checklist"] =1? "disabled ":""?>/></div>
+				<div style='float: left;'><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Insert" name="Insert" <?php echo $row["self_checklist"] ==1? "disabled ":""?>/></div>
 				<div style='float:right;'><nav aria-label="...">
   <ul class="pagination">
    <li class="page-item"><a class="page-link" href="i.php">1</a></li>

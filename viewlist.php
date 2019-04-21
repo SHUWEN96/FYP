@@ -54,7 +54,7 @@ session_start();
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                 <a class="navbar-brand" href="officer.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
+                 <a class="navbar-brand" href="applicant.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -83,108 +83,26 @@ session_start();
 
     <div id="right-panel" class="right-panel">
     
-        <!-- Header-->
+         <!-- Header-->
         <header id="header" class="header">
 
             <div class="header-menu">
 
-                <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                            </form>
-                        </div>
-
-                        <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">5</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
-                                <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <i class="fa fa-check"></i>
-                                <p>Server #1 overloaded.</p>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <i class="fa fa-info"></i>
-                                <p>Server #2 overloaded.</p>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <i class="fa fa-warning"></i>
-                                <p>Server #3 overloaded.</p>
-                            </a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown for-message">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="message"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="ti-email"></i>
-                                <span class="count bg-primary">9</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
-                                <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jonathan Smith</span>
-                                    <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jack Sanders</span>
-                                    <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Cheryl Wheeler</span>
-                                    <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Rachel Santos</span>
-                                    <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            
-                 <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
+							<div class="col-sm-7">
+								<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+								<div class="header-left">
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                           
+								</div>
 
-                            
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
+							</div>
+						</div>
         </header><!-- /header -->
 
         <!-- Header-->
@@ -220,10 +138,7 @@ session_start();
                                 <table class="table">
                                     <tbody>
                          <?php
-							$link = mysqli_connect("localhost", "root", "");
-
-							mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-							mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+							
 
 							$qlist = "SELECT * FROM userlist 
 								  INNER JOIN position ON userlist.user_Ic = position.user_Ic 
@@ -257,11 +172,6 @@ session_start();
                                     <tbody>
 									<?php
 									
-									$link = mysqli_connect("localhost", "root", "");
-
-										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
 										$qlist = "SELECT * FROM userlist 
 								  INNER JOIN applicant ON userlist.user_Ic = applicant.user_Ic 
 								  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
@@ -334,21 +244,17 @@ session_start();
 						</div>
                     				
 							<div class="card">
-							<?php  	  
-$link = mysqli_connect("localhost", "root", "");
+						<?php  	  
 
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+						 $qlist = "SELECT * FROM userlist 
+							  INNER JOIN education ON userlist.user_Ic = education.user_Ic 
+							  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+							  $reslist = $db->query($qlist);
+						  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
 
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN education ON userlist.user_Ic = education.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-      $reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
-
- 
-  
-?>
+						 
+						  
+						?>
 	
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
@@ -374,21 +280,21 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 									<th scope="col"><label for="uni_status">Status</label></th> 
                                     <th scope="col"><label for="uni_date">Date</label></th> 
 									</tr>
-		  <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
-            echo "<tr>";
-            echo "<td style='width:10%'>".$rowlist['Edu_Type']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Edu_School']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Edu_Year']."</td>";    
-			echo "<td style='width:5%'>".$rowlist['Edu_Level']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Edu_Specialize']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Edu_Status']."</td>";
-			echo "<td style='width:10%'>".$rowlist['Edu_Date']."</td>";
-			echo "<td style='width:5%'>".$rowlist['Edu_Cert']."</td>";
-           
-        }
-        ?>
+								  <?php 
+								//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+								while($rowlist = $reslist->fetch_assoc()) {        
+									echo "<tr>";
+									echo "<td style='width:10%'>".$rowlist['Edu_Type']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Edu_School']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Edu_Year']."</td>";    
+									echo "<td style='width:5%'>".$rowlist['Edu_Level']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Edu_Specialize']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Edu_Status']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Edu_Date']."</td>";
+									echo "<td style='width:5%'>".$rowlist['Edu_Cert']."</td>";
+								   
+								}
+								?>
 	
                  
 								
@@ -399,20 +305,16 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 							
 							<div class="card">
 							<?php  	  
-$link = mysqli_connect("localhost", "root", "");
 
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+							 $qlist = "SELECT * FROM userlist 
+								  INNER JOIN cocuriculum ON userlist.user_Ic = cocuriculum.user_Ic 
+								  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+								  $reslist = $db->query($qlist);
+							  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
 
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN cocuriculum ON userlist.user_Ic = cocuriculum.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-      $reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
-
- 
-  
-?>
+							 
+							  
+							?>
 							<div class="card-header">
 								<i class="mr-2 fa fa-align-justify"></i>
 								<strong class="card-title" style="font-size:px;">3. COCURICULUM LEVEL</strong>
@@ -428,17 +330,17 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 														 <th scope="col"><label for="file">File Uploaded</label></th>
 														
 													</tr>
-										  <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
-            echo "<tr>";
-            echo "<td style='width:20%'>".$rowlist['coco_level']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Koko_Activity_Year']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Koko_Activity_name']."</td>";    
-			echo "<td style='width:10%'>".$rowlist['Koko_Activity_Cert']."</td>";
-       
-        }
-        ?>
+								<?php 
+								//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+								while($rowlist = $reslist->fetch_assoc()) {        
+									echo "<tr>";
+									echo "<td style='width:20%'>".$rowlist['coco_level']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Koko_Activity_Year']."</td>";
+									echo "<td style='width:10%'>".$rowlist['Koko_Activity_name']."</td>";    
+									echo "<td style='width:10%'>".$rowlist['Koko_Activity_Cert']."</td>";
+							   
+								}
+								?>
 												</tbody>
 											</table>
 										</div>
@@ -446,19 +348,15 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 							
 							  <div class="card">
 							  <?php  	  
-$link = mysqli_connect("localhost", "root", "");
 
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN work_experience ON userlist.user_Ic = work_experience.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-$reslist = $db->query($qlist);
-  
- 
-  
-?>
+								 $qlist = "SELECT * FROM userlist 
+									  INNER JOIN work_experience ON userlist.user_Ic = work_experience.user_Ic 
+									  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+								$reslist = $db->query($qlist);
+								  
+								 
+								  
+								?>
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
                         <strong class="card-title" style="font-size:px;">4. WORK EXPERIENCES</strong>
@@ -468,41 +366,41 @@ $reslist = $db->query($qlist);
                                 <table class="table">
                                     <tbody>
                                         <tr style="height: 20px;">
-<th scope="col" colspan="8"><label for="experience">List the experience details</label></th>
-</tr>
+											<th scope="col" colspan="8"><label for="experience">List the experience details</label></th>
+											</tr>
 
-<tr >
- 
-  <th scope="col" rowspan="2" ><label for="Employer_Name_Add">Employer's Name and Address</label></th>
-  <th scope="col" rowspan="2" ><label for="Applicant_Post">Position</label></th>
-  <th scope="col" rowspan="2" ><label for="Applicant_Month_Salary">Basic Salary per Month (RM)</label></th>
-  <th scope="col" colspan="2" ><label for="date">Date</label></th>
-  <th scope="col" rowspan="2"><label for="Work_Contract">Fixed / Contract and Others</label></th>
-  <th scope="col" rowspan="2" ><label for="Reason_Stop">Reason Stop</label></th>
- 
-  
-</tr>
+											<tr >
+											 
+											  <th scope="col" rowspan="2" ><label for="Employer_Name_Add">Employer's Name and Address</label></th>
+											  <th scope="col" rowspan="2" ><label for="Applicant_Post">Position</label></th>
+											  <th scope="col" rowspan="2" ><label for="Applicant_Month_Salary">Basic Salary per Month (RM)</label></th>
+											  <th scope="col" colspan="2" ><label for="date">Date</label></th>
+											  <th scope="col" rowspan="2"><label for="Work_Contract">Fixed / Contract and Others</label></th>
+											  <th scope="col" rowspan="2" ><label for="Reason_Stop">Reason Stop</label></th>
+											 
+											  
+											</tr>
           
-<tr style="height: 20px;"> 
-  <th scope="col"><label for="Work_Start_Date">Date Start</label></th></th> 
-  <th scope="col"><label for="Work_End_Date">Date End</label></th> 
-  
-</tr>       
-   <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
-            echo "<tr>";
-			
-            echo "<td style='width:10%'>".$rowlist['Employer_Name_Add']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Applicant_Post']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Applicant_Month_Salary']."</td>";    
-			echo "<td style='width:10%'>".$rowlist['Work_Start_Date']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Work_End_Date']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Work_Contract']."</td>";
-			echo "<td style='width:10%'>".$rowlist['Reason_Stop']."</td>";
-                  
-        }
-        ?>
+											<tr style="height: 20px;"> 
+											  <th scope="col"><label for="Work_Start_Date">Date Start</label></th></th> 
+											  <th scope="col"><label for="Work_End_Date">Date End</label></th> 
+											  
+											</tr>       
+										   <?php 
+												//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+												while($rowlist = $reslist->fetch_assoc()) {        
+													echo "<tr>";
+													
+													echo "<td style='width:10%'>".$rowlist['Employer_Name_Add']."</td>";
+													echo "<td style='width:10%'>".$rowlist['Applicant_Post']."</td>";
+													echo "<td style='width:10%'>".$rowlist['Applicant_Month_Salary']."</td>";    
+													echo "<td style='width:10%'>".$rowlist['Work_Start_Date']."</td>";
+													echo "<td style='width:10%'>".$rowlist['Work_End_Date']."</td>";
+													echo "<td style='width:10%'>".$rowlist['Work_Contract']."</td>";
+													echo "<td style='width:10%'>".$rowlist['Reason_Stop']."</td>";
+														  
+												}
+												?>
 
                                     </tbody>
                                 </table>
@@ -510,21 +408,15 @@ $reslist = $db->query($qlist);
                         </div>
 						
 						<div class="card">
-						<?php  	  
-$link = mysqli_connect("localhost", "root", "");
+								<?php  	  
 
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+								 $qlist = "SELECT * FROM userlist 
+									  INNER JOIN training ON userlist.user_Ic = training.user_Ic 
+									  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+								$reslist = $db->query($qlist);
+								  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
 
- $qlist = "SELECT * FROM userlist 
-	  INNER JOIN training ON userlist.user_Ic = training.user_Ic 
-	  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-$reslist = $db->query($qlist);
-  //echo "<span align='center'>Selamat Datang,</br>" .$row["FirstName"]." ".$row["LastName"]."</span><br>";
-
- 
-  
-?>
+								?>
     
                     <div class="card-header">
                         <i class="mr-2 fa fa-align-justify"></i>
@@ -536,28 +428,28 @@ $reslist = $db->query($qlist);
                                     <tbody>
                                         <tr style="height: 20px;">
   
-  <th scope="col"><label for="Training_Name">Course Name</label></th>
-  <th scope="col"><label for="Training_date_start">Start Date</label></th>
-  <th scope="col"><label for="Training_date_end">End Date</label></th>
-  <th scope="col"><label for="Training_Organizer">Organizer</label></th>
-  <th scope="col"><label for="Training_Place">Place</label></th>
-  <th scope="col"><label for="Training_Result">Results</label></th>
+										  <th scope="col"><label for="Training_Name">Course Name</label></th>
+										  <th scope="col"><label for="Training_date_start">Start Date</label></th>
+										  <th scope="col"><label for="Training_date_end">End Date</label></th>
+										  <th scope="col"><label for="Training_Organizer">Organizer</label></th>
+										  <th scope="col"><label for="Training_Place">Place</label></th>
+										  <th scope="col"><label for="Training_Result">Results</label></th>
 
-</tr>
- <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist->fetch_assoc()) {        
-            echo "<tr>";
-		
-            echo "<td style='width:10%'>".$rowlist['Training_Name']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Training_date_start']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Training_date_end']."</td>";    
-			echo "<td style='width:10%'>".$rowlist['Training_Organizer']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Training_Place']."</td>";
-            echo "<td style='width:10%'>".$rowlist['Training_Result']."</td>";
-                
-        }
-        ?>
+										</tr>
+									 <?php 
+											//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+											while($rowlist = $reslist->fetch_assoc()) {        
+												echo "<tr>";
+											
+												echo "<td style='width:10%'>".$rowlist['Training_Name']."</td>";
+												echo "<td style='width:10%'>".$rowlist['Training_date_start']."</td>";
+												echo "<td style='width:10%'>".$rowlist['Training_date_end']."</td>";    
+												echo "<td style='width:10%'>".$rowlist['Training_Organizer']."</td>";
+												echo "<td style='width:10%'>".$rowlist['Training_Place']."</td>";
+												echo "<td style='width:10%'>".$rowlist['Training_Result']."</td>";
+													
+											}
+											?>
                                     </tbody>
                                 </table>
                             </div>
@@ -571,12 +463,8 @@ $reslist = $db->query($qlist);
 								<div class="card-body">
 									<table class="table">
 										<tbody>
-											                         <?php
-							$link = mysqli_connect("localhost", "root", "");
-
-							mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-							mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
+							<?php
+							
 							$qlist = "SELECT * FROM userlist 
 								  INNER JOIN self_reference ON userlist.user_Ic = self_reference.user_Ic 
 								  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
@@ -615,18 +503,14 @@ $reslist = $db->query($qlist);
 								</div>
 								<div class="card-body">
 								<p>Under section 5, the Service Commission Act 1957 (Revision 1989), an applicant who gives false or misleading information
-	 in the application form for an employment, is liable to be jailed for 2 years or fined two thousand Ringgit of Malaysia or both.</p>
+								 in the application form for an employment, is liable to be jailed for 2 years or fined two thousand Ringgit of Malaysia or both.</p>
 
-	<p>I hereby declare that I am:</p>
+								<p>I hereby declare that I am:</p>
 									<table class="table">
 								
 										<tbody>
 										<?php
-							$link = mysqli_connect("localhost", "root", "");
-
-							mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-							mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
+							
 							$qlist = "SELECT * FROM userlist 
 								  INNER JOIN acknowledgement ON userlist.user_Ic = acknowledgement.user_Ic 
 								  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";

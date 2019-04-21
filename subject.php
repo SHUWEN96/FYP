@@ -70,10 +70,6 @@ $result = mysqli_query($mysqli, "SELECT * FROM subject ORDER BY subject_id DESC"
 </head>
 <body>
 <?php  	  
-$link = mysqli_connect("localhost", "root", "");
-
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
  $qlist = "SELECT * FROM subject WHERE Edu_Type='".$_GET['Edu_Type'] ."'";
 $reslist = $db->query($qlist);

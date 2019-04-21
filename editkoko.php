@@ -84,7 +84,7 @@ if(isset($_POST['update'])) {
        $result = mysqli_query($mysqli, "UPDATE cocuriculum SET coco_level='$coco_level',Koko_Activity_Year='$Koko_Activity_Year',Koko_Activity_name='$Koko_Activity_name',Koko_Activity_Cert='$filename' WHERE Cocuriculum_Id=$Cocuriculum_Id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='cocuriculum.php'>View Result</a>";
+        echo "<br/><a href='cocuriculum.php'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
     }
 }
 ?>

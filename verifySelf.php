@@ -21,6 +21,6 @@ $reslist = $db->query($qlist);
 
 	$result = mysqli_query($link, $query)or die("Failed to query database".mysqli_error($link));
 	 echo "<script>alert ('Verify successfully.')</script>";
-         echo "<br/><a href='javascript:self.history.back();'>Back</a>";
+         echo "<script> location.href='7.php'; </script>";
  }
  

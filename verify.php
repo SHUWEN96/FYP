@@ -46,34 +46,7 @@ session_start();
 </head>
 
 <body>
-<?php  	  
-/*$link = mysqli_connect("localhost", "root", "");
-
-mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
-echo $qlist = "SELECT SUM(main)total FROM (
-SELECT a.Choose_Position_Id main FROM position a WHERE a.user_Ic = 961015086090
-UNION ALL 
-SELECT b.Applicant_Id FROM applicant b WHERE b.user_Ic = 961015086090 
-UNION ALL 
-SELECT c.Education_detail_Id FROM education c WHERE c.user_Ic = 961015086090
-UNION ALL 
-SELECT d.Cocuriculum_Id FROM cocuriculum d WHERE d.user_Ic = 961015086090
-UNION ALL 
-SELECT e.Work_Experience_Id FROM work_experience e WHERE e.user_Ic = 961015086090
-UNION ALL 
-SELECT f.Training_Id FROM training f WHERE f.user_Ic = 961015086090
-UNION ALL 
-SELECT g.self_reference_id FROM self_reference g WHERE g.user_Ic = 961015086090
-UNION ALL 
-SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 961015086090
-)ApplicationForm";
-*/
-?>
-
-
-    <!-- Left Panel -->
+<!-- Left Panel -->
 
 				<aside id="left-panel" class="left-panel">
 					<nav class="navbar navbar-expand-sm navbar-default">
@@ -253,7 +226,7 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
                         <ol class="breadcrumb text-right">
                             
                             <li><a href="#">Application Form</a></li>
-                            <li class="active">Choose Position</li>
+                            <li class="active">Verification</li>
                         </ol>
                     </div>
                 </div>
@@ -308,11 +281,12 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Position_checklist FROM position where Choose_Position_Id='$Choose_Position_Id'";
+							$qlist = "SELECT Position_checklist FROM position where user_Ic='".$_SESSION['SESS_NOIC'] ."'";
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Position_checklist"];
-							
+								if ($rowlist['Position_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
 									?>
 											</td>
 											<td scope="col">	<?php
@@ -326,10 +300,12 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Applicant_checklist FROM applicant WHERE Applicant_Id='$Applicant_Id'";	
+							$qlist = "SELECT Applicant_checklist FROM applicant WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Applicant_checklist"];
+									if ($rowlist['Applicant_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
 							
 									?></td>
 											<td scope="col"><?php
@@ -343,10 +319,13 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Edu_checklist FROM education WHERE Education_detail_Id='$Education_detail_Id'";	
+							$qlist = "SELECT Edu_checklist FROM education WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";	
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Edu_checklist"];
+								if ($rowlist['Edu_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+								
 							
 									?></td>
 											<td scope="col"><?php
@@ -360,10 +339,13 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Cocuriculum_checklist FROM cocuriculum WHERE Cocuriculum_Id='$Cocuriculum_Id'";	
+							$qlist = "SELECT Cocuriculum_checklist FROM cocuriculum WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";	
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Cocuriculum_checklist"];
+								if ($rowlist['Cocuriculum_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+									
 							
 									?></td>
 											<td scope="col"><?php
@@ -377,10 +359,13 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Work_experience_checklist FROM work_experience WHERE Work_Experience_Id='$Work_Experience_Id'";	
+							$qlist = "SELECT Work_experience_checklist FROM work_experience WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Work_experience_checklist"];
+								if ($rowlist['Work_experience_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+									
 							
 									?></td>
 											<td scope="col"><?php
@@ -394,11 +379,13 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Training_checklist FROM training WHERE Training_Id='$Training_Id'";	
+							$qlist = "SELECT Training_checklist FROM training WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";	
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Training_checklist"];
-							
+									if ($rowlist['Training_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+									
 									?></td>
 											<td scope="col"><?php
 											 $self_reference_id = null;
@@ -411,10 +398,13 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT self_checklist FROM self_reference WHERE self_reference_id='$self_reference_id'";	
+							$qlist = "SELECT self_checklist FROM self_reference WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";	
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["self_checklist"];
+								if ($rowlist['self_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+									
 							
 									?></td>
 											<td scope="col"><?php
@@ -428,13 +418,25 @@ SELECT h.acknowledgement_id FROM acknowledgement h WHERE h.user_Ic = 96101508609
 										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-							$qlist = "SELECT Ack_checklist FROM acknowledgement WHERE acknowledgement_id='$acknowledgement_id'";	
+							$qlist = "SELECT Ack_checklist FROM acknowledgement WHERE user_Ic='".$_SESSION['SESS_NOIC'] ."'";
 								  $reslist = $db->query($qlist);
 								$rowlist = $reslist->fetch_assoc();
-									echo $rowlist["Ack_checklist"];
-							
+								if ($rowlist['Ack_checklist'] == '1'){
+									echo "<span class='badge badge-pill badge-success'>Verified</span>";
+								}
+								
 									?></td>
-											<th scope="col"><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Verify" name="Submit"/></th>
+											<th scope="col"><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Verify" name="Submit"<?php 
+											$link = mysqli_connect("localhost", "root", "");
+
+										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
+
+										 $qlist = "SELECT * FROM decision 
+											  WHERE user_Ic='".$_SESSION['SESS_NOIC']."'";
+											  $reslist = $db->query($qlist);
+											  $rowlist = $reslist->fetch_assoc();
+											  echo $rowlist["Is_active"] ==1? "disabled ":""?>/></th>
                                          </tr>
                               
                                       

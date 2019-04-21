@@ -62,7 +62,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
 								<i class="fa fa-bars"></i>
 							</button>
-						  <a class="navbar-brand" href="officer.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
+						  <a class="navbar-brand" href="applicant.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
 						</div>
 
 						<div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -130,101 +130,23 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
 
 				<div class="header-menu">
 
-					<div class="col-sm-7">
-						<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-						<div class="header-left">
-							<button class="search-trigger"><i class="fa fa-search"></i></button>
-							<div class="form-inline">
-								<form class="search-form">
-									<input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-									<button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-								</form>
-							</div>
+					<div class="header-menu">
 
-							<div class="dropdown for-notification">
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-bell"></i>
-									<span class="count bg-danger">5</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="notification">
-									<p class="red">You have 3 Notification</p>
-									<a class="dropdown-item media bg-flat-color-1" href="#">
-									<i class="fa fa-check"></i>
-									<p>Server #1 overloaded.</p>
-								</a>
-									<a class="dropdown-item media bg-flat-color-4" href="#">
-									<i class="fa fa-info"></i>
-									<p>Server #2 overloaded.</p>
-								</a>
-									<a class="dropdown-item media bg-flat-color-5" href="#">
-									<i class="fa fa-warning"></i>
-									<p>Server #3 overloaded.</p>
-								</a>
+							<div class="col-sm-7">
+								<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+								<div class="header-left">
 								</div>
 							</div>
-
-							<div class="dropdown for-message">
-								<button class="btn btn-secondary dropdown-toggle" type="button"
-									id="message"
-									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="ti-email"></i>
-									<span class="count bg-primary">9</span>
-								</button>
-								<div class="dropdown-menu" aria-labelledby="message">
-									<p class="red">You have 4 Mails</p>
-									<a class="dropdown-item media bg-flat-color-1" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Jonathan Smith</span>
-										<span class="time float-right">Just now</span>
-											<p>Hello, this is an example msg</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-4" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Jack Sanders</span>
-										<span class="time float-right">5 minutes ago</span>
-											<p>Lorem ipsum dolor sit amet, consectetur</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-5" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Cheryl Wheeler</span>
-										<span class="time float-right">10 minutes ago</span>
-											<p>Hello, this is an example msg</p>
-									</span>
-								</a>
-									<a class="dropdown-item media bg-flat-color-3" href="#">
-									<span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-									<span class="message media-body">
-										<span class="name float-left">Rachel Santos</span>
-										<span class="time float-right">15 minutes ago</span>
-											<p>Lorem ipsum dolor sit amet, consectetur</p>
-									</span>
-								</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					    <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
+							<div class="col-sm-5">
+								<div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                           
+								</div>
 
-                            
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
+							</div>
+						</div>
 
 
         </header><!-- /header -->
@@ -247,16 +169,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
          <div class="content mt-3">
             <div class="animated">
 				<?php  	  
-				$link = mysqli_connect("localhost", "root", "");
-
-				mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-				mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
+				
 				 $qlist = "SELECT * FROM userlist 
 					  INNER JOIN decision ON userlist.user_Ic = decision.user_Ic 
 					  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
 				$reslist = $db->query($qlist);
-				
 				?>
                 <div class="card">
 							
@@ -272,18 +189,25 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
 										<tbody>
 										<input type="hidden" class="form-control" name="user_Ic" id="disabledInput" type="text" placeholder="<?php echo $_SESSION['SESS_NOIC'] ?>" readonly>
 								<?php
-							while($rowlist = $reslist->fetch_assoc()) {   
+							while($rowlist = $reslist->fetch_assoc()) { 
+                            
 							echo "<tr >"; 
-							echo "<center >"; 							
-									echo "<h2 style='background-color:rgb(255, 99, 71);' >"."<div class='upper'>"."<strong>". "STATUS : "."</strong>" . $rowlist["Status_1"]."&nbsp"."&nbsp"."&nbsp".$rowlist["Status_2"]. "<br>". "</h2>"."</h2>";
-								
+							echo "<center >"; 
+							if($rowlist['Status_1']=='In Process'){							
+									echo "<h2 style='background-color:rgb(255, 99, 71);' >"."<div class='upper'>"."<strong>". "STATUS : "."</strong>" . $rowlist["Status_1"]."<br>". "</h2>"."</h2>";
+									 echo "</tr>";
+							}
+							else {	
+									echo "<h2 style='background-color:rgb(255, 99, 71);' >"."<div class='upper'>"."<strong>". "STATUS : "."</strong>" . $rowlist["Status_1"]."<br>". "</h2>"."</h2>";
 									 echo "</tr>";
 									echo "<tr>";     
 									echo "<td style='width:50%' >"."<strong>". "Officer Name : "."</strong>" . $rowlist["Officer_Name"]. "<br>"."</td>";
 									
 									echo "<td style='width:50%'>"."<strong>". "Date  : "."</strong>" . $rowlist["date_Officer"]. "<br>"."</td>";
 									echo "</tr>";
+							}
 								}
+							
 								?>
 										
 										</tbody>	

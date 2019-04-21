@@ -5,13 +5,12 @@ $db = db_connect();
 
 session_start();
 
-$link = mysqli_connect("localhost", "root", "");
+$connect = mysqli_connect("localhost", "root", "", "final_year_project");
+$query = 'SELECT * FROM report';
 
-									mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-									mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-									$qlist = 'SELECT app_post1, Status_1 FROM decision';
-									
-									$reslist = $db->query($qlist);
+
+$result = mysqli_query($connect, $query);
+
 
 ?>
 
@@ -55,43 +54,52 @@ $link = mysqli_connect("localhost", "root", "");
 	</style>
 	
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript">
+    <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
+      google.charts.setOnLoadCallback(drawChart);
 
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Status', 'Percentage'],
-		  <?php
-	
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Job Postion', 'Interview','Waiting List','Rejected'],
+		<?php
+        while($row = mysqli_fetch_array($result))
+{
+  echo "['".$row['app_post1']."', ".$row['Interview'].",".$row['WaitingList'].",".$row['Rejected']."],";   
+ 
 
-		  while($rowlist = $reslist->fetch_assoc()) { 
-			echo "['".$rowlist[1]."', ".$rowlist[0]."],";  						  
-									 }
-
+}
 ?>
-          
-		 
-        ]);
 
-        var options = {
-          title: 'Percentage of Applicant Status',
-          width: 900,
-          legend: { position: 'none' },
+      ]);
+		
+		var options = {
+        width: 1150,
+        height: 500,
+        legend: { position: 'top', maxLines: 3 },
           chart: { title: 'Applicant Status',
-                   subtitle: 'Percentage of Applicant Status at UTHM Batu Pahat' },
+                   subtitle: 'Total Applicant Applied at UTHM Batu Pahat' },
           bars: 'horizontal', // Required for Material Bar Charts.
           axes: {
             x: {
-              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+              0: { side: 'bottom', label: 'Total Applicant'} // Top x-axis.
             }
           },
-          bar: { groupWidth: "90%" }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-        chart.draw(data, options);
+        bar: { groupWidth: '50%' },
+        isStacked: true
       };
+	  
+	     var options_stacked = {
+          isStacked: true,
+          height: 300,
+          legend: {position: 'top', maxLines: 3},
+          hAxis: {minValue: 0}
+        };
+    
+        
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
     </script>
 </head>
 
@@ -107,13 +115,13 @@ $link = mysqli_connect("localhost", "root", "");
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                 <a class="navbar-brand" href="officer.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
+                 <a class="navbar-brand" href="manager.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="SignUp1Officer.php"> </i>Officer Registration </a>
+                        <a href="registerOff.php"> </i>Officer Registration </a>
                     </li>
 					 <li class="active">
                         <a href="finallist.php"> </i>Final List Applicant</a>
@@ -136,127 +144,23 @@ $link = mysqli_connect("localhost", "root", "");
         <!-- Header-->
         <header id="header" class="header">
 
-            <div class="header-menu">
+            	<div class="header-menu">
 
-                <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                            </form>
-                        </div>
-
-                        <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">5</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="notification">
-                                <p class="red">You have 3 Notification</p>
-                                <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <i class="fa fa-check"></i>
-                                <p>Server #1 overloaded.</p>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <i class="fa fa-info"></i>
-                                <p>Server #2 overloaded.</p>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <i class="fa fa-warning"></i>
-                                <p>Server #3 overloaded.</p>
-                            </a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown for-message">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="message"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="ti-email"></i>
-                                <span class="count bg-primary">9</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
-                                <a class="dropdown-item media bg-flat-color-1" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jonathan Smith</span>
-                                    <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-4" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Jack Sanders</span>
-                                    <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-5" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Cheryl Wheeler</span>
-                                    <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                </span>
-                            </a>
-                                <a class="dropdown-item media bg-flat-color-3" href="#">
-                                <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                                <span class="message media-body">
-                                    <span class="name float-left">Rachel Santos</span>
-                                    <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                </span>
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
+							<div class="col-sm-7">
+								<a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+								<div class="header-left">
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                           <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+								</div>
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
-                        </div>
-                    </div>
-
-                    <div class="language-select dropdown" id="language-select">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="language">
-                            <div class="dropdown-item">
-                                <span class="flag-icon flag-icon-fr"></span>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-es"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-us"></i>
-                            </div>
-                            <div class="dropdown-item">
-                                <i class="flag-icon flag-icon-it"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+							</div>
+						</div>
         </header><!-- /header -->
         <!-- Header-->
        <div class="breadcrumbs">
@@ -266,32 +170,36 @@ $link = mysqli_connect("localhost", "root", "");
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             
-                            <li><a href="#">Main Menu</a></li>
+                          <li class="active">Generate Report</li>
                             
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-    
+    	<form class="form-inline" action="reporttotal.php" name="listForm" method="post" enctype="multipart/form-data">
         <div class="content mt-3">
 		
             <div class="animated fadeIn">
                 <div class="row">
+				
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-							<div id="top_x_div" style="width: 900px; height: 500px;"></div>
+							<div id="top_x_div" ></div>
+								
                             </div>
                          </div>  
                     </div>
 				</div>
             </div><!-- .animated -->
 			
-  
+	
+<center><input type="submit" class="btn btn-sm btn-outline-secondary" value="Based on Job Position" name="Submit" /><input type="submit" class="btn btn-sm btn-outline-secondary" value="Based on Year" name="Submit" /></center>
+				
    <br>
     </div><!-- /#right-panel -->
-
+</form>
     <!-- Right Panel -->
 
     <!-- Right Panel -->

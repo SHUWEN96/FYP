@@ -34,7 +34,8 @@ if(isset($_POST['update'])) {
        $result = mysqli_query($mysqli, "UPDATE subject SET subject='$subject',gred='$gred' WHERE subject_id=$subject_id");
         //display success message
         echo "<script>alert ('Data edit successfully.')</script>";
-        echo "<br/><a href='subject.php?Edu_Type=".$Edu_Type."'>View Result</a>";
+        echo "<br/><a href='subject.php?Edu_Type=".$Edu_Type."'><button style='border-radius: 8px;' type='button' class='btn btn-primary'>View Result</button></a>";
+		
     }
 }		
 ?>

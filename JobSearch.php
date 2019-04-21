@@ -49,7 +49,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="officer.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -64,7 +65,7 @@
                         <a href="viewlist.php"> </i>Print Application Form </a>
                     </li>
 					 <li class="active">
-                        <a href="applicantNotify.php"> </i>Notification</a>
+                        <a href="#"> </i>Notification</a>
                     </li>
 					
                 </ul>
@@ -230,9 +231,9 @@
   $sql = 'SELECT * FROM job_requirement ORDER BY Job_Requirement_Id DESC';
   foreach ($pdo->query($sql) as $row) {
                             echo '<tr>';
-                            echo '<td align="center">'. $row['Job_Post_Nama'] . '</td>';
+                            echo '<td>'. $row['Job_Post_Nama'] . '</td>';
                           
-							echo '<td align="center">';
+							echo '<td >';
                                 echo '<a style="border-radius: 8px;" class="btn btn-primary" href="read1.php?Job_Requirement_Id='.$row['Job_Requirement_Id'].'">Read</a>';
            
                             echo '</tr>';

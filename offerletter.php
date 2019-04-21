@@ -79,30 +79,35 @@ $query ="INSERT INTO notify(Applicant_Name,user_Ic,message,interview_date,notify
 	                <div class="modal-dialog modal-lg" role="document">
 	                     <div class="modal-content">
 	                        <div class="modal-header">
-                                <h5 class="modal-title" id="mediumModalLabel">Notify Message</h5>
+                                <h5 class="modal-title" id="mediumModalLabel">Offer Letter</h5>
                                
                             </div>
 							<div class="modal-body">
                                 <div class="card-body">
                                 <table class="table" width="25%" border="0">
                                     <tbody>
-                                      
-									   <tr>
-                                            <th scope="col">Subject :</th>
-                                            <th scope="col">Invitation to Interview /Waiting List/Rejected</th>
-                                       </tr>
-									 
+                                     
+									
 										<tr>
                                               <th scope="col" >Dear</th>
 											  <th><input class="form-control" type="text" name="dear" value="<?php echo $_GET['Applicant_Name'];?>"></th>
                                        </tr>
-									   
-                                             <tr >
-                                             <th scope="col">Message</th>
-                                             <th scope="col" ><textarea class="form-control" name="message" rows="10" cols="50"placeholder="Enter Message" ></textarea>
+								        <tr >
+                                             <th scope="col"> We were all very excited to meet and get to know you over the past few days. We have been impressed with your background and would like to formally offer you the position of </th>
+                                             <th scope="col" ><input class="form-control" type="text" name="dear" value="<?php echo $_GET['app_post1'];?>">
                           
-                                        
+                                        	   [date.] You will be asked to sign a contract of [contract_duration, if applicable] and [mention agreements, like confidentiality, nondisclosure and noncompete] at the beginning of your employment.We would like to have your response by [date.] In the meantime, please feel free to contact me or [Manager_name] via email or phone on [provide contact details], should you have any questions.We are all looking forward to having you on our team.
+											   Best regards,
+											   [your name]
+											   [Signature]
+                  
                                         </tr>
+										<p>This is a [full/part] time position [mention working days and hours.] You will be reporting to the head of the Humandepartment. [If applicable: Please note that [Company_name] is an at-will employer. That means that either you or [Company_name] are free to end the employment relationship at any time, with or without notice or cause.]
+
+											We will be offering you an annual gross salary of [$X] and [mention bonus programs, if applicable.] You will also have [mention benefits as per company policy, like health and insurance plan, corporate mobile or travel expenses] and [X] days of paid vacation per year.
+											[optional: I am attaching a letter with more details about your compensation plan.]
+
+											Your expected starting date is <input class="form-control" type="text" name="date"></p>
 										
 										<tr >
                                              <th scope="col">Interview Date</th>

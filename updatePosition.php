@@ -34,6 +34,7 @@ $app_post1 = $_POST['app_post1'];
        $result = mysqli_query($mysqli, "UPDATE position SET faculty='$faculty',app_post1='$app_post1' WHERE Choose_Position_Id=$Choose_Position_Id");
         //display success message
         echo "<script>alert('Data update successfully.')</script>";
+		echo "<script> location.href='i.php'; </script>";
        
     }
 }		

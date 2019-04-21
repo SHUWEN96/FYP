@@ -50,9 +50,9 @@ $acknowledgement_5 = $_POST['acknowledgement_5'];
         //insert data to database
        $result = mysqli_query($mysqli, "UPDATE acknowledgement SET acknowledgement_1='$acknowledgement_1',acknowledgement_2='$acknowledgement_2',acknowledgement_3='$acknowledgement_3',acknowledgement_4='$acknowledgement_4',acknowledgement_5='$acknowledgement_5' WHERE acknowledgement_id=$acknowledgement_id");
         //display success message
-       $message = "Update Successfully.Application Form fill up successfully and refered your status from officer decision within 1 week";
+       $message = "Update Successfully.";
 		echo "<script type='text/javascript'>alert('$message');</script>";
-	echo "<script> location.href='applicant.php'</script>";
+	echo "<script> location.href='verify.php'</script>";
        
     }
 }		

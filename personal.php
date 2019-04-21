@@ -9,17 +9,6 @@ $link = mysqli_connect("localhost", "root", "");
 mysqli_connect("localhost","root","")or die(mysqli_connect_error());
 mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
-$Applicant_Name = mysqli_real_escape_string($link,$_POST['Applicant_Name']);
-
-$query = mysqli_query($link,"Select * from applicant WHERE Applicant_Name='$Applicant_Name'");
-$exists = mysqli_num_rows($query);
-
-if($exists > 0)
-{    
-	$data = mysqli_fetch_assoc($query);
-	$_SESSION['SESSAPP'] = $data['Applicant_Name'];
-	$_SESSION['SESSAPPID'] = $data['Applicant_Id'];
-}
 
 $qlist = "SELECT * FROM userlist WHERE user_id='".$_SESSION['SESS_USER_ID'] ."'";
 $reslist = $db->query($qlist);
