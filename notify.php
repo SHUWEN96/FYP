@@ -18,14 +18,13 @@ if ( !empty($_GET['Decision_Id'])) {
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -61,7 +60,9 @@ if ( !empty($_GET['Decision_Id'])) {
                // Connect to server and select database.
     $link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
     mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-$query ="INSERT INTO notify(Applicant_Name,user_Ic,message,interview_date,notify_date)VALUES('$Applicant_Name','$user_Ic','$message','$interview_date',CURRENT_TIMESTAMP)";
+	
+    $query ="INSERT INTO notify(Applicant_Name,user_Ic,message,interview_date,notify_date,notify_checklist)
+	VALUES('$Applicant_Name','$user_Ic','$message','$interview_date',CURRENT_TIMESTAMP,'1')";
 
   $result = mysqli_query($link, $query)or die("Failed to query database".mysqli_error($link));
 

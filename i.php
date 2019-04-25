@@ -44,14 +44,13 @@ $app_post1 = $_POST['app_post1'];
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -141,7 +140,7 @@ $app_post1 = $_POST['app_post1'];
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
 								</li>
 								<li class="active">
-									<a href="verify.php"> </i>Verification</a>
+									<a href="verify.php"> </i>Applicant Verification</a>
 								</li>
 								<li class="active">
 									<a href="8.php"> </i>Officer Decision </a>
@@ -221,8 +220,9 @@ $app_post1 = $_POST['app_post1'];
 						 </div>
                             <div class="card-body">
                                 <table class="table">
-								<input type="hidden" class="form-control" name="user_Ic" id="disabledInput" type="text" placeholder="<?php echo $_SESSION['SESS_NOIC'] ?>" readonly>
-                                    <tbody>
+								<input type="hidden" class="form-control" name="user_Ic" id="disabledInput" type="text" placeholder="<?php echo $_SESSION['SESS_USER_ID'] ?>" readonly>
+                                    
+									<tbody>
 									
                                         <tr>
                                             <th scope="col"><label for="faculty">Faculty</label></th>

@@ -8,14 +8,13 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -49,8 +48,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+               <a class="navbar-brand" href="applicant.php"><img src="images/images/uthm.jpeg" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -221,24 +219,24 @@
                                 <table class="table" id="myTable">
                                     <tbody>
                                         <tr >
-                                            <th scope="col" ><label for="grade">Grade/Job Position</label></center></th>
+                                            <th scope="col" ><label for="grade">Grade/Job Position</label></th>
 											<th scope="col" colspan="3"> <label for="action">Action</label></th>
                                         </tr>
                  
-         <?php
-  include 'database.php';
-  $pdo = Database::connect();
-  $sql = 'SELECT * FROM job_requirement ORDER BY Job_Requirement_Id DESC';
-  foreach ($pdo->query($sql) as $row) {
-                            echo '<tr>';
-                            echo '<td>'. $row['Job_Post_Nama'] . '</td>';
-                          
-							echo '<td >';
-                                echo '<a style="border-radius: 8px;" class="btn btn-primary" href="read1.php?Job_Requirement_Id='.$row['Job_Requirement_Id'].'">Read</a>';
-           
-                            echo '</tr>';
-                   }
-                   Database::disconnect();
+										 <?php
+								  include 'database.php';
+								  $pdo = Database::connect();
+								  $sql = 'SELECT * FROM job_requirement ORDER BY Job_Requirement_Id DESC';
+								  foreach ($pdo->query($sql) as $row) {
+															echo '<tr>';
+															echo "<td style='width:50%' align='justify'>". $row['Job_Post_Nama'] . "</td>";
+														  
+															echo "<td style='width:50%' align='center'>";
+																echo '<a style="border-radius: 8px;" class="btn btn-primary" href="read1.php?Job_Requirement_Id='.$row['Job_Requirement_Id'].'">Read</a>';
+										   
+															echo '</tr>';
+												   }
+												   Database::disconnect();
                   ?>
                                     </tbody>
                                 </table>

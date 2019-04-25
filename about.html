@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <head>
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Recruitment Management System</title>
      <meta name="description" content="Sufee Admin - HTML5 Admin Template">
@@ -31,46 +31,52 @@
 </head>
 
 <body class="bg-dark">
-<?php 
-	if(isset($_GET['pesan'])){
-		if($_GET['pesan']=="gagal"){
-			Print '<script>alert("IC Number and password are unmatch!");</script>';
-		}
-	}
-	?>
-   
+
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
                     <a href="MainPage.html">
-                       <center><h4>LOGIN HERE</h4></center> 
+                       <center><h4>ABOUS US</h4></center> 
                     </a>
                 </div>
                 <div class="login-form">
-                     <form action="checklogin.php" method="post">
-
-                        <div class="form-group">
-                            <label>IC Number</label>
-                             <input type="text" class="form-control" placeholder="Enter IC No" name="user_Ic" required>
-                        </div>
+                     <form >
+						<div class="form-group row">
+						<label  class="col-sm-2 col-form-label">Address</label>
+						<div class="col-sm-10">
+						  <input type="text" readonly class="form-control-plaintext"  value="Unit Perancangan dan Pelantikan Staf,">
+						  <input type="text" readonly class="form-control-plaintext"  value="Bahagian Sumber Manusia,">
+						  <input type="text" readonly class="form-control-plaintext"  value="Pejabat Pendaftar,">
+						  <input type="text" readonly class="form-control-plaintext"  value="Universiti Tun Hussein Onn Malaysia,">
+						    <input type="text" readonly class="form-control-plaintext"  value="86400 Parit Raja, Batu Pahat,Johor.">
+									
+						</div>
+					  </div>
+					  
+					  <div class="form-group row">
+						<label  class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-10">
+						  <input type="text" readonly class="form-control-plaintext" value="perjawatan@uthm.edu.my">
+						</div>
+					  </div>
+					  
+                       <div class="form-group row">
+						<label class="col-sm-2 col-form-label">Fax</label>
+						<div class="col-sm-10">
+						  <input type="text" readonly class="form-control-plaintext"value="07-4536337">
+						</div>
+					  </div>
+					  
+					  <div class="form-group row">
+						<label class="col-sm-2 col-form-label">Website</label>
+						<div class="col-sm-10">
+						  <input type="text" readonly class="form-control-plaintext" value="http://pendaftar.uthm.edu.my">
+						</div>
+					  </div>
+						
 					
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password"  class="form-control" placeholder="Enter Password" name="password" autocomplete="new-password" required>	
-                        </div>
-                                <div class="checkbox">
-                                    <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                                 
-
-                                </div>
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                                
-                                <div class="register-link m-t-15 text-center">
-                                    <p>Don't have account ? <a href="SignUp2Applicant.php">Sign Up Here</a></p>
-                                </div>
+                               
                     </form>
                 </div>
             </div>

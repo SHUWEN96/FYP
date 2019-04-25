@@ -18,14 +18,13 @@ if ( !empty($_GET['decison_interview_id'])) {
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -67,7 +66,7 @@ if ( !empty($_GET['decison_interview_id'])) {
                // Connect to server and select database.
     $link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
     mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-$query ="INSERT INTO decision_interview(Applicant_Name,user_Ic,criteria_1,criteria_2,criteria_3,criteria_4,criteria_5,total)VALUES('$Applicant_Name','$user_Ic','$criteria_1', '$criteria_2', '$criteria_3', '$criteria_4','$criteria_5','$total')";
+$query ="INSERT INTO decision_interview(Applicant_Name,user_Ic,criteria_1,criteria_2,criteria_3,criteria_4,criteria_5,total,decision_checklist)VALUES('$Applicant_Name','$user_Ic','$criteria_1', '$criteria_2', '$criteria_3', '$criteria_4','$criteria_5','$total','1')";
 
   $result = mysqli_query($link, $query)or die("Failed to query database".mysqli_error($link));
   
@@ -138,7 +137,12 @@ $query ="INSERT INTO decision_interview(Applicant_Name,user_Ic,criteria_1,criter
                                             
                                          <tr>
                                             <td scope="col"style= 'align:justify'>Total</td>
-											<td style= 'align:justify'><input style="border-radius: 8px;" class="btn btn-success" type="submit" name="submit" value="Add"></td>
+											<td scope="col" style= 'align:justify'><?php 
+											$qlist = "SELECT * FROM decision_interview WHERE user_Ic= '".$_GET['user_Ic']."'";
+											$reslist = $db->query($qlist);
+											 $row = $reslist->fetch_assoc();
+									        echo $row["total"]?>/100</td>
+											<td style= 'align:justify'><input style="border-radius: 8px;" class="btn btn-success" type="submit" name="submit" value="Add" <?php echo $row["decision_checklist"] ==1? "disabled ":""?>></td>
 										</tr>   
 											
                                     </tbody>

@@ -17,12 +17,12 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/ico" href="images/icon.png" />
+
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -93,13 +93,13 @@ session_start();
 									<a href="5.php"> </i>Training Record/Course </a>
 								</li>
 								<li class="active">
-									<a href="6.html"> </i>Self References </a>
+									<a href="6.php"> </i>Self References </a>
 								</li>
 								<li class="active">
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
 								</li>
 								<li class="active">
-									<a href="verify.php"> </i>Verification</a>
+									<a href="verify.php"> </i>Applicant Verification</a>
 								</li>
 								<li class="active">
 									<a href="8.php"> </i>Officer Decision </a>
@@ -226,7 +226,7 @@ session_start();
                         <ol class="breadcrumb text-right">
                             
                             <li><a href="#">Application Form</a></li>
-                            <li class="active">Verification</li>
+                            <li class="active">Applicant Verification</li>
                         </ol>
                     </div>
                 </div>
@@ -241,7 +241,7 @@ session_start();
                         <div class="card">
                             <div class="card-header">
 							 <i class="mr-2 fa fa-align-justify"></i>
-                                <strong class="card-title" style="font-size:px;">Verification</strong>
+                                <strong class="card-title" style="font-size:px;">APPLICANT VERIFICATION</strong>
 							
                             </div>
 							<div id="AppForm"> 
@@ -426,17 +426,7 @@ session_start();
 								}
 								
 									?></td>
-											<th scope="col"><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Verify" name="Submit"<?php 
-											$link = mysqli_connect("localhost", "root", "");
-
-										mysqli_connect("localhost","root","")or die(mysqli_connect_error());
-										mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
-
-										 $qlist = "SELECT * FROM decision 
-											  WHERE user_Ic='".$_SESSION['SESS_NOIC']."'";
-											  $reslist = $db->query($qlist);
-											  $rowlist = $reslist->fetch_assoc();
-											  echo $rowlist["Is_active"] ==1? "disabled ":""?>/></th>
+											<th scope="col"><input style="border-radius: 8px;" type="submit" class="btn btn-success" value="Verify" name="Submit"</th>
                                          </tr>
                               
                                       

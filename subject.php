@@ -39,14 +39,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM subject ORDER BY subject_id DESC"
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -110,7 +109,7 @@ $reslist = $db->query($qlist);
 		    // do something
 			echo"<td style='width:30%'>" .$rowlist['subject']."</td>";
 	        echo "<td style='width:10%'>".$rowlist['gred']."</td>"; 
- echo "<td style='width:20%'><a href=\"editSub.php?subject_id=$rowlist[subject_id] & Edu_Type=$rowlist[Edu_Type]\">Edit</a> | <a href=\"deleteSub.php?subject_id=$rowlist[subject_id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>"; 													 
+ echo "<td style='width:20%'><a href=\"editSub.php?subject_id=$rowlist[subject_id] & Edu_Type=$rowlist[Edu_Type]\">Edit</a> | <a href=\"deleteSub.php?subject_id=$rowlist[subject_id] & Edu_Type=$rowlist[Edu_Type]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>"; 													 
 		    echo "</tr>"; }           
         }
 		}

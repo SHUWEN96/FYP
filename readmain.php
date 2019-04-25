@@ -16,7 +16,7 @@ $db = db_connect();
 <!--<![endif]-->
 
 <head>
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Recruitment Management System</title>
      <meta name="description" content="Sufee Admin - HTML5 Admin Template">
@@ -59,16 +59,18 @@ $db = db_connect();
 							<div class="modal-body">
                                 <div class="card-body">
                                 <table class="table" width="25%" border="0">
-                                    <tbody>
-                                        <?php
-							
+                                    <tbody><?php
+							$link = mysqli_connect("localhost", "root", "");
+
+							mysqli_connect("localhost","root","")or die(mysqli_connect_error());
+							mysqli_select_db($link,"final_year_project") or die("Cannot connect to database");
 
 							$qlist = "SELECT * FROM job_requirement where Job_Requirement_Id=$Job_Requirement_Id";
 								  $reslist = $db->query($qlist);
 
 							while($rowlist = $reslist->fetch_assoc()) {   
 							echo "<tr>";     
-									echo "<td style='width:10%'>"."<strong>"."Grade : "."</strong>" . $rowlist["Job_Post_Nama"]. "<br>"."</td>";
+									echo "<td style='width:10%'>"."<strong>". "Grade : "."</strong>" . $rowlist["Job_Post_Nama"]. "<br>"."</td>";
 									 echo "</tr>";
 									 echo "<tr>";
 									echo "<td style='width:10%'>"."<strong>". "Job Requirement  : "."</strong>" . $rowlist["Job_Post_Syarat"]. "<br>"."</td>";
@@ -79,12 +81,14 @@ $db = db_connect();
 								}
 
 						?>
-                                    </tbody>
+					</tbody>
+					
+                                        
                                 </table>
                                 </div>
                             </div>
                             <div class="modal-footer">
-							<a style="border-radius: 8px;" class="btn btn-primary" href="JobSearch.php">Back</a>
+							<a style="border-radius: 8px;" class="btn btn-primary" href="JobSearchmain.php">Back</a>
 							
                             </div>
                         </div>

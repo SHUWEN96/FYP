@@ -34,7 +34,7 @@ $Dad_Ic = $_POST['dadIC'];
 $Spouse_name = $_POST['couple'];
 	
 	// checking empty fields
-    if(empty($Applicant_Name) || empty($Applicant_Add) || empty($Applicant_Email)|| empty($Applicant_NoTel)|| empty($Applicant_Age)|| empty($Applicant_gender) || empty($Applicant_DOB) ||empty($Applicant_POB) ||empty($Applicant_Citizen) ||empty($Applicant_Religion) ||empty($Applicant_Nation) ||empty($Applicant_MaritalStatus) ||empty($Applicant_Height) ||empty($Applicant_Weight) ||empty($Applicant_NoHP) ||empty($Applicant_VLC) ||empty($Mom_Name) ||empty($Mom_Ic) ||empty($Dad_Name) ||empty($Dad_Ic) ||empty($Spouse_name) ) {                
+    if(empty($Applicant_Name) || empty($Applicant_Add) || empty($Applicant_Email)|| empty($Applicant_NoTel)|| empty($Applicant_Age)|| empty($Applicant_gender) || empty($Applicant_DOB) ||empty($Applicant_POB) ||empty($Applicant_Citizen) ||empty($Applicant_Religion) ||empty($Applicant_Nation) ||empty($Applicant_MaritalStatus) ||empty($Applicant_Height) ||empty($Applicant_Weight) ||empty($Applicant_NoHP) ||empty($Applicant_VLC) ||empty($Mom_Name) ||empty($Dad_Name) ) {                
         if(empty($Applicant_Name)) {
             echo "<script>alert('Applicant name field is empty.')</script>";
         }
@@ -118,32 +118,12 @@ $Spouse_name = $_POST['couple'];
             echo "<script>alert('Applicant mom name field is empty.')</script>";
 			
         }
-		
-		if(empty($Mom_IC)) {
-            echo "<script>alert('Applicant mom IC field is empty.')</script>";
-			
-        }
-		
+	
 		if(empty($Dad_Name)) {
             echo "<script>alert('Applicant dad name field is empty.')</script>";
 			
         }
 		
-		if(empty($Dad_IC)) {
-            echo "<script>alert('Applicant dad IC field is empty.')</script>";
-			
-        }
-		
-		if(empty($Spouse_Name)) {
-            echo "<script>alert('Spouse Name field is empty.')</script>";
-			
-        }
-        
-        
-        
-        
-        //link to the previous page
-        echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
     } else { 
         // if all the fields are filled (not empty)             
         //insert data to database
@@ -209,8 +189,8 @@ mysqli_select_db($link,"final_year_project") or die("Cannot connect to database"
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+    <meta name="description" content="E-Recruitment Management System">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">

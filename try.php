@@ -12,7 +12,8 @@ session_start();
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
-	<meta charset="utf-8">
+
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>E-Recruitment Management System</title>
      <meta name="description" content="Sufee Admin - HTML5 Admin Template">
@@ -157,15 +158,16 @@ session_start();
 									</tr>
 									<?php  	  
 								
-									$qlist = "SELECT * FROM decision WHERE Is_active='1' AND app_post1='DS51 SENIOR LECTURER'";
+									$qlist = "SELECT * FROM decision WHERE Is_active='1'";
 									
 									$reslist = $db->query($qlist);
 									
 									$count=0;
 									 while($rowlist = $reslist->fetch_assoc()) { 
 											
-											   $user_Ic=$rowlist["user_Ic"];
-											$count++; 
+											$user_Ic=$rowlist["user_Ic"];
+											if ($rowlist['app_post1'] == 'DS51 SENIOR LECTURER'){
+												$count++; 
 											   echo "<tr>";
 													echo"<td style='width:5%'>" .$count."</td>";
 													echo"<td style='width:20%' align='center'>" .$rowlist['Applicant_Name']." </td>";
@@ -184,8 +186,9 @@ session_start();
 											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='DecisionIv.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Decision</a></td>";
 											}
 													
-									 }		
-									
+													
+											}			
+									 }
 
 									?>
                                     </tbody>

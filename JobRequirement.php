@@ -16,14 +16,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM job_requirement ORDER BY Job_Requ
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -153,7 +152,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM job_requirement ORDER BY Job_Requ
         //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
         while($rowlist = $reslist->fetch_assoc()) {        
             echo "<tr>";
-            echo "<td style='width:50%' align='center'>".$rowlist['Job_Post_Nama']."</td>";
+            echo "<td style='width:50%' align='justify'>".$rowlist['Job_Post_Nama']."</td>";
             
            echo "<td style='width:50%' align='center'><a href=\"read.php?Job_Requirement_Id=$rowlist[Job_Requirement_Id]\">Read</a> ||<a href=\"update.php?Job_Requirement_Id=$rowlist[Job_Requirement_Id]\">Edit</a> | <a href=\"delete.php?Job_Requirement_Id=$rowlist[Job_Requirement_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";      
         }

@@ -22,15 +22,14 @@ $reslist = $db->query($qlist);
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
+	<link rel="icon" type="image/ico" href="images/icon.png" />
+	
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
@@ -122,7 +121,7 @@ $reslist = $db->query($qlist);
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             
-                            <li><a href="#">Main Menu</a></li>
+                            <li><a href="#">Notification</a></li>
                             
                         </ol>
                     </div>
@@ -130,11 +129,15 @@ $reslist = $db->query($qlist);
             </div>
         </div>
      <form class="form-inline" method="post" enctype="multipart/form-data">
+
          <div class="content mt-3">
+		 
 		     <div class="animated">
 		         
 	                <div class="modal-dialog modal-lg" role="document">
+					
 	                     <div class="modal-content">
+						  
 	                        <div class="modal-header">
                                 <h5 class="modal-title" id="mediumModalLabel">Notify Message</h5>
                                
@@ -150,13 +153,7 @@ $reslist = $db->query($qlist);
 									 $qlist = "SELECT * FROM userlist 
 										  INNER JOIN notify ON userlist.user_Ic = notify.user_Ic 
 										  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-										$reslist = $db->query($qlist);
-										 $qlist1 = "SELECT * FROM userlist 
-										  INNER JOIN notify ON userlist.user_Ic = notify.user_Ic 
-										  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
-										$reslist = $db->query($qlist);
-														
-									$reslist = $db->query($qlist);
+									 $reslist = $db->query($qlist);
 									
 									 while($rowlist = $reslist->fetch_assoc()) { 
 					
@@ -194,9 +191,20 @@ $reslist = $db->query($qlist);
                                 </div>
                             </div>
 							<div class="modal-footer">
+							<?php  	  
 
+
+					 $qlist = "SELECT * FROM userlist 
+						  INNER JOIN notify ON userlist.user_Ic = notify.user_Ic 
+						  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+					$reslist = $db->query($qlist);
+					  $row1 = $reslist->fetch_assoc();
+					 
+					  
+					?>
 							<a style="border-radius: 8px;" class="btn btn-primary" href="applicant.php">OK</a>
-							
+							<a href="offerletterApp.php">
+							<input type="button" style="border-radius: 8px;" class="btn btn-primary" value="Offer Letter"<?php echo $row1["offer_checklist"] ==0? "disabled ":""?> /></a>
                             </div>	
                         </div>
                     </div>

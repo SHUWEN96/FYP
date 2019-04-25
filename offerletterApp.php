@@ -45,7 +45,6 @@ if ( !empty($_GET['Decision_Id'])) {
   font-size:14px;
 }
 
-
 .underlined {
   height:20px;
   border: none;
@@ -62,24 +61,7 @@ c{
 </head>
 
 <body>
- <?php 
-  
-          if(isset($_POST['submit'])){
-              
-               // Connect to server and select database.
-    $link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
-    mysqli_select_db($link, "final_year_project")or die("cannot select DB");
-    $query ="Update notify SET offer_checklist='1' WHERE notify_checklist='1'";
 
-  $result = mysqli_query($link, $query)or die("Failed to query database".mysqli_error($link));
-
-		echo "<script type='text/javascript'>alert('Send Successfully.');</script>";
-	echo "<script> location.href='javascript:history.back(1);'; </script>";
-		exit;
-          }
-                
-          ?>
-      
  <form class="form-inline" method="post" enctype="multipart/form-data">
          <div class="content mt-3">
 		     <div class="animated">
@@ -92,7 +74,15 @@ c{
                             </div>
 							<div class="modal-body">
                                 <div class="card-body">
-								 <th><b>TO : <?php echo $_GET['Applicant_Name'];?></b></th>
+								 <th><b>TO : <?php  	  
+									
+									 $qlist = "SELECT * FROM userlist 
+										  INNER JOIN decision ON userlist.user_Ic = decision.user_Ic 
+										  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+									 $reslist = $db->query($qlist);
+									 $row = $reslist->fetch_assoc();
+									 echo $row['Applicant_Name'];
+									 ?></b></th>
 									 <br/>
 								 <br/>
 								 <br/>
@@ -112,8 +102,18 @@ c{
                                 <table class="table" width="25%" border="0">
                                     <tbody>
                                    <tr>
-                                             <th scope="col" >Gred/Job Position</th>
-											 <td><input class="form-control" type="text" name="dear" value="<?php echo $_GET['app_post1'];?>"></td>
+								   <th scope="col" >Gred/Job Position</th>
+								   <?php  	  
+									
+									 $qlist = "SELECT * FROM userlist 
+										  INNER JOIN decision ON userlist.user_Ic = decision.user_Ic 
+										  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+									 $reslist = $db->query($qlist);
+									 $row = $reslist->fetch_assoc();
+									 echo "<td scope='col' >".$row['app_post1']."</td>";
+									 
+									 ?>
+                                            
 										</tr>
 										
 										</tr>
@@ -137,9 +137,9 @@ c{
 										</tr>
                                              <th scope="col" style="width:50%">Salary</th>
 											 <td scope="col" <?php 
-											 $qlist = "SELECT * FROM job_requirement WHERE Job_Post_Nama='".$_GET['app_post1']."'";
+											 $qlist = "SELECT * FROM job_requirement WHERE Job_Post_Nama='".$row['app_post1']."'";
 								  $reslist = $db->query($qlist);
-									$row = $reslist->fetch_assoc();
+									$row = $reslist->fetch_assoc();;
 							
 							if($row['Job_Post_Nama']=='DS45 LECTURER'){
 								echo "<td style='width:10%'>". $row["Job_Post_Salary"]. "<br>"."</td>";
@@ -151,18 +151,27 @@ c{
 							   echo "</tr>";
 								?></tD>
 										</tr>
-										
+										<tr>
+								   <th scope="col" >Faculty</th>
+								   <?php  	  
+									
+									 $qlist = "SELECT * FROM userlist 
+										  INNER JOIN decision ON userlist.user_Ic = decision.user_Ic 
+										  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+									 $reslist = $db->query($qlist);
+									 $row = $reslist->fetch_assoc();
+									 echo "<td scope='col'>".$row['faculty']."</td>";
+									 
+									 ?>
+                                            
 										</tr>
-                                             <th scope="col" >Faculty</th>
-											 <td><input class="form-control" type="text" name="dear" value="<?php echo $_GET['faculty'];?>"></td>
-										</tr>
-										
+										 
                                     </tbody>
                                 </table>
                                 </div>
                             </div>
 							<div class="modal-footer">
-							  <button style="border-radius: 8px;" name="submit" class="btn btn-success" type="submit">Submit</button>
+							 
 							<a style="border-radius: 8px;" class="btn btn-primary" href='javascript:history.back(1);'>Done</a>
 							
                             </div>

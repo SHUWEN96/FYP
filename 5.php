@@ -23,12 +23,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -106,7 +105,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
 								</li>
 								<li class="active">
-									<a href="verify.php"> </i>Verification</a>
+									<a href="verify.php"> </i>Applicant Verification</a>
 								</li>
 								<li class="active">
 									<a href="8.php"> </i>Officer Decision </a>
@@ -208,11 +207,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM training ORDER BY Training_Id DES
         while($rowlist = $reslist2->fetch_assoc()) {        
             echo "<tr>";
 			
-            echo "<td style='width:20%' align='center'>".$rowlist['Training_Name']."</td>";
+            echo "<td style='width:10%' align='center'>".$rowlist['Training_Name']."</td>";
             echo "<td style='width:10%' align='center'>".$rowlist['Training_date_start']."</td>";
             echo "<td style='width:10%' align='center'>".$rowlist['Training_date_end']."</td>";    
 			echo "<td style='width:20%' align='center'>".$rowlist['Training_Organizer']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Training_Place']."</td>";
+            echo "<td style='width:20%' align='center'>".$rowlist['Training_Place']."</td>";
             echo "<td style='width:10%' align='center'>".$rowlist['Training_Result']."</td>";
             echo "<td style='width:20%' align='center'><a href=\"editTraining.php?Training_Id=$rowlist[Training_Id]\">Edit</a> | <a href=\"deleteTraining.php?Training_Id=$rowlist[Training_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> </td>";      
         }

@@ -19,11 +19,12 @@ if ( !empty($_GET['Decision_Id'])) {
 					session_start();
 					$Applicant_Name=$_SESSION['SESS_APPNAME'];
 					$app_post1=$_SESSION['SESS_POST'];
-					$qlist = "SELECT * FROM position LEFT JOIN applicant ON position.user_Ic = applicant.user_Ic";
+					$qlist = "SELECT * FROM position LEFT JOIN applicant ON position.user_Ic = applicant.user_Ic WHERE Applicant_Name='".$_SESSION['SESS_APPNAME']."'";
 					$reslist = $db->query($qlist);
 
 					 while($rowlist = $reslist->fetch_assoc()) {        
 							   $user_Ic=$rowlist["user_Ic"];
+							   $faculty=$rowlist["faculty"];
 							  
 							}
 					if(isset($_POST['Insert'])) { 	
@@ -37,7 +38,7 @@ if ( !empty($_GET['Decision_Id'])) {
 						$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
 						mysqli_select_db($link, "final_year_project")or die("cannot select DB");
 						
-						$sql = "INSERT INTO decision(Applicant_Name,user_Ic,app_post1,Status_1,Status_2,Officer_Name,date_Officer,Is_active)VALUES('$Applicant_Name','$user_Ic','$app_post1','$Status_1','$Status_2','$Officer_Name','$date_Officer','1')";
+						$sql = "INSERT INTO decision(Applicant_Name,user_Ic,app_post1,faculty,Status_1,Status_2,Officer_Name,date_Officer,Is_active)VALUES('$Applicant_Name','$user_Ic','$app_post1','$faculty','$Status_1','$Status_2','$Officer_Name','$date_Officer','1')";
 						$sql1 = "UPDATE decision SET Is_active='0' WHERE Status_1='In Process'";
 						
 					  

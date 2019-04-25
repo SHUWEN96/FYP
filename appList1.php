@@ -20,13 +20,11 @@ if ( !empty($_GET['Applicant_Id'])) {
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -179,7 +177,7 @@ if ( !empty($_GET['Applicant_Id'])) {
 												echo"<td style='width:25%' align='center'>" .$rowlist['app_post1']."</td>";
 												echo"<td style='width:10%' align='center'>" .$rowlist['faculty']."</td>";
 												echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-info btn-sm' href ='viewlistOff.php?user_Ic=$rowlist[user_Ic]'>View</a></td>";
-													echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='officerdecision.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] & app_post1=$rowlist[app_post1]  '>Approval</a></td>";
+													echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='officerdecision.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] & app_post1=$rowlist[app_post1] & faculty=$rowlist[faculty] '>Approval</a></td>";
 												
 												echo "</tr>";
 										       

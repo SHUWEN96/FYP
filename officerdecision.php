@@ -27,14 +27,13 @@ $_SESSION['SESS_POST'] = $_GET['app_post1'];
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -171,7 +170,7 @@ $_SESSION['SESS_POST'] = $_GET['app_post1'];
 													 <th scope="col" ><label for="waitingList"><input class="form-control" type="text" name="Status_2" maxlength="50" size="30" ></label></th>
 																							</tr>
 									</table>
-										<p>for <?php echo $_SESSION['SESS_APPNAME']; ?> with <?php echo $_SESSION['SESS_POST']; ?></p>
+										<p>for <?php echo $_SESSION['SESS_APPNAME']; ?> with <?php echo $_SESSION['SESS_POST']; ?> in  <?php echo $_GET['faculty'];?></p>
 
 										
 									<table class="table">

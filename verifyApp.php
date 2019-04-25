@@ -23,6 +23,7 @@ session_start();
 
 	 while($rowlist2 = $reslist2->fetch_assoc()) {        
 			   $app_post1=$rowlist2["app_post1"];
+			   $faculty=$rowlist2["faculty"];
 			}
 	
  			if(isset($_POST['Submit'])) { 	
@@ -31,7 +32,7 @@ session_start();
 						$link = mysqli_connect("localhost", "root", "")or die("cannot connect server "); 
 						mysqli_select_db($link, "final_year_project")or die("cannot select DB");
 						
-						$sql = "INSERT INTO decision(Applicant_Name,user_Ic,app_post1,Status_1,Is_active)VALUES('$Applicant_Name','$user_Ic','$app_post1','In Process','1')";
+						$sql = "INSERT INTO decision(Applicant_Name,user_Ic,faculty,app_post1,Status_1,Is_active)VALUES('$Applicant_Name','$user_Ic','$faculty','$app_post1','In Process','1')";
 						
 					  
 					// if successfully insert data into database, displays message "Successful". 

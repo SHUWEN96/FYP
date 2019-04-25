@@ -21,14 +21,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM work_experience ORDER BY Work_Exp
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -106,7 +105,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM work_experience ORDER BY Work_Exp
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
 								</li>
 								<li class="active">
-									<a href="verify.php"> </i>Verification</a>
+									<a href="verify.php"> </i>Applicant Verification</a>
 								</li>
 								<li class="active">
 									<a href="8.php"> </i>Officer Decision </a>
@@ -195,43 +194,43 @@ $result = mysqli_query($mysqli, "SELECT * FROM work_experience ORDER BY Work_Exp
                                 <table class="table">
                                     <tbody>
                                         <tr style="height: 20px;">
-<th scope="col" colspan="8"><label for="experience">List the experience details</label></th>
-</tr>
+								<th scope="col" colspan="8"><label for="experience">List the experience details</label></th>
+								</tr>
 
-<tr >
- 
-  <th scope="col" rowspan="2" ><label for="Employer_Name_Add">Employer's Name and Address</label></th>
-  <th scope="col" rowspan="2" ><label for="Applicant_Post">Position</label></th>
-  <th scope="col" rowspan="2" ><label for="Applicant_Month_Salary">Basic Salary per Month (RM)</label></th>
-  <th scope="col" colspan="2" ><label for="date">Date</label></th>
-  <th scope="col" rowspan="2"><label for="Work_Contract">Fixed / Contract and Others</label></th>
-  <th scope="col" rowspan="2" ><label for="Reason_Stop">Reason Stop</label></th>
-  <th scope="col" rowspan="2" ><label for="action">Action</label></th>
-  
-</tr>
-          
-<tr style="height: 20px;"> 
-  <th scope="col"><label for="Work_Start_Date">Date Start</label></th></th> 
-  <th scope="col"><label for="Work_End_Date">Date End</label></th> 
-  
-</tr>       
+								<tr >
+								 
+								  <th scope="col" rowspan="2" ><label for="Employer_Name_Add">Employer's Name and Address</label></th>
+								  <th scope="col" rowspan="2" ><label for="Applicant_Post">Position</label></th>
+								  <th scope="col" rowspan="2" ><label for="Applicant_Month_Salary">Basic Salary per Month (RM)</label></th>
+								  <th scope="col" colspan="2" ><label for="date">Date</label></th>
+								  <th scope="col" rowspan="2"><label for="Work_Contract">Fixed / Contract and Others</label></th>
+								  <th scope="col" rowspan="2" ><label for="Reason_Stop">Reason Stop</label></th>
+								  <th scope="col" rowspan="2" ><label for="action">Action</label></th>
+								  
+								</tr>
+										  
+								<tr style="height: 20px;"> 
+								  <th scope="col"><label for="Work_Start_Date">Date Start</label></th></th> 
+								  <th scope="col"><label for="Work_End_Date">Date End</label></th> 
+								  
+								</tr>       
 
-             
-        <?php 
-        //while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
-        while($rowlist = $reslist2->fetch_assoc()) {        
-            echo "<tr>";
-			
-            echo "<td style='width:10%' align='center'>".$rowlist['Employer_Name_Add']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Applicant_Post']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Applicant_Month_Salary']."</td>";    
-			echo "<td style='width:10%' align='center'>".$rowlist['Work_Start_Date']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Work_End_Date']."</td>";
-            echo "<td style='width:10%' align='center'>".$rowlist['Work_Contract']."</td>";
-			echo "<td style='width:10%' align='center'>".$rowlist['Reason_Stop']."</td>";
-            echo "<td style='width:20%' align='center'><a href=\"editExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\">Edit</a> | <a href=\"deleteExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";        
-        }
-        ?>
+											 
+										<?php 
+										//while($res = mysql_fetch_array($result)) { // mysql_fetch_array is deprecated, we need to use mysqli_fetch_array 
+										while($rowlist = $reslist2->fetch_assoc()) {        
+											echo "<tr>";
+											
+											echo "<td style='width:10%' align='center'>".$rowlist['Employer_Name_Add']."</td>";
+											echo "<td style='width:10%' align='center'>".$rowlist['Applicant_Post']."</td>";
+											echo "<td style='width:10%' align='center'>".$rowlist['Applicant_Month_Salary']."</td>";    
+											echo "<td style='width:10%' align='center'>".$rowlist['Work_Start_Date']."</td>";
+											echo "<td style='width:10%' align='center'>".$rowlist['Work_End_Date']."</td>";
+											echo "<td style='width:10%' align='center'>".$rowlist['Work_Contract']."</td>";
+											echo "<td style='width:10%' align='center'>".$rowlist['Reason_Stop']."</td>";
+											echo "<td style='width:20%' align='center'><a href=\"editExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\">Edit</a> | <a href=\"deleteExperience.php?Work_Experience_Id=$rowlist[Work_Experience_Id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";        
+										}
+										?>
                                     </tbody>
                                 </table>
                           </div>

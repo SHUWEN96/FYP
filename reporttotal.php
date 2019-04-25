@@ -1,4 +1,3 @@
-
 <?php
 					//including the database connection file
 					include_once("config.php");
@@ -57,5 +56,3 @@
 					}
 					
 						?>
-						
-					

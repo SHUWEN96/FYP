@@ -20,14 +20,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
 	<!--<![endif]-->
 
 	<head>
-		<meta charset="utf-8">
+		 <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Sufee Admin - HTML5 Admin Template</title>
-		<meta name="description" content="Sufee Admin - HTML5 Admin Template">
+		<title>E-Recruitment Management System</title>
+		 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="apple-touch-icon" href="apple-icon.png">
-		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" type="image/ico" href="images/icon.png" />
 
 		<link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -106,7 +105,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
 									<a href="7.php"> </i>Acknowledgment of the Applicant</a>
 								</li>
 								<li class="active">
-									<a href="verify.php"> </i>Verification</a>
+									<a href="verify.php"> </i>Applicant Verification</a>
 								</li>
 								<li class="active">
 									<a href="8.php"> </i>Officer Decision </a>
@@ -170,9 +169,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM decision ORDER BY decision_Id ");
             <div class="animated">
 				<?php  	  
 				
-				 $qlist = "SELECT * FROM userlist 
-					  INNER JOIN decision ON userlist.user_Ic = decision.user_Ic 
-					  WHERE user_id='".$_SESSION['SESS_USER_ID']."'";
+				 $qlist = "SELECT * FROM userlist a 
+					  INNER JOIN decision d ON a.user_Ic = d.user_Ic 
+					  WHERE a.user_id='".$_SESSION['SESS_USER_ID']."' AND d.Is_active='1'";
 				$reslist = $db->query($qlist);
 				?>
                 <div class="card">

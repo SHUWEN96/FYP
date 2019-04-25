@@ -19,15 +19,13 @@ if ( !empty($_GET['Decision_Id'])) {
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -157,6 +155,8 @@ if ( !empty($_GET['Decision_Id'])) {
 									  <th scope="col" ><label for="no">No</label></th>
 									  <th scope="col" ><label for="Applicant_Name">Applicant Name</label></th>
 									  <th scope="col" ><label for="user_Ic">Applicant IC</label></th>
+									  <th scope="col" ><label for="faculty">Faculty</label></th>
+									   <th scope="col" ><label for="app_post1">Job Position</label></th>
 									  <th scope="col" ><label for="status">Status</label></th>
 									  <th scope="col" ><label for="AppForm">Application Form</label></th>
 									  <th scope="col" ><label for="approve">Approval</label></th>
@@ -166,7 +166,7 @@ if ( !empty($_GET['Decision_Id'])) {
 									</tr>
 									<?php  	  
 									
-									$qlist = "SELECT * FROM decision WHERE Is_active='1'";
+									$qlist = "SELECT * FROM decision WHERE Is_active='1' AND app_post1='DS45 LECTURER'";
 									
 									$reslist = $db->query($qlist);
 									
@@ -174,13 +174,15 @@ if ( !empty($_GET['Decision_Id'])) {
 									 while($rowlist = $reslist->fetch_assoc()) { 
 												
 											   $user_Ic=$rowlist["user_Ic"];
-										if ($rowlist['app_post1'] == 'DS45 LECTURER'){
+										
 											$count++; 
 											
 											   echo "<tr>";
 													echo"<td style='width:5%' align='center'>" .$count."</td>";
-													echo"<td style='width:20%' align='center'>" .$rowlist['Applicant_Name']." </td>";
-													echo"<td style='width:20%' align='center'>" .$rowlist['user_Ic']."</td>";
+													echo"<td style='width:10%' align='center'>" .$rowlist['Applicant_Name']." </td>";
+													echo"<td style='width:10%' align='center'>" .$rowlist['user_Ic']."</td>";
+													echo"<td style='width:10%' align='center'>" .$rowlist['faculty']."</td>";
+													echo"<td style='width:20%' align='center'>" .$rowlist['app_post1']."</td>";
 													if ($rowlist['Status_1'] == 'Interview') {
 													  // do something
 													  echo"<td style='width:10%' align='center'>" .$rowlist['Status_1']."</td>";	
@@ -192,14 +194,14 @@ if ( !empty($_GET['Decision_Id'])) {
 													if ($rowlist['Status_1'] == 'Interview') {
 													echo"<td style='width:20%' align='center'><a style='border-radius: 8px;' class='btn btn-info btn-sm' href ='DecisionIvM.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>View</a></td>";
 													
-													echo"<td style='width:15%' align='center'><a style='border-radius: 8px;' class='btn btn-success btn-sm' href ='offerletter.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Send</a></td>";
+													echo"<td style='width:5%' align='center'><a style='border-radius: 8px;' class='btn btn-success btn-sm' href ='offerletter.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] & app_post1=$rowlist[app_post1] & & faculty=$rowlist[faculty]'>Send</a></td>";
 													}
 													
 													echo "</tr>";													  
 													
 											
 										}			
-									 }
+									 
 
 									?>
                                     </tbody>

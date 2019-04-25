@@ -13,14 +13,13 @@ session_start();
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -154,48 +153,52 @@ session_start();
 									  <th scope="col" ><label for="approve">Manager Approval</label></th>
 									   <th scope="col" ><label for="approveDate">Date Approval</label></th>
 									   <th scope="col" ><label for="notify">Notification</label></th>
-									  
 									    <th scope="col" ><label for="decisionIv">Interview Decision</label></th>
 									    
 									  
 									</tr>
 									<?php  	  
 									
-									$qlist = "SELECT * FROM decision WHERE Is_active='1'";
-									
+									$qlist = "SELECT * FROM decision WHERE Is_active='1' AND app_post1='DS45 LECTURER'";
 									$reslist = $db->query($qlist);
 									
 									$count=0;
 									 while($rowlist = $reslist->fetch_assoc()) { 
 											
-											   $user_Ic=$rowlist["user_Ic"];
-											if ($rowlist['app_post1'] == 'DS45 LECTURER'){
+											$user_Ic=$rowlist["user_Ic"];
+											
 												$count++; 
 											   echo "<tr>";
 													echo"<td style='width:5%'>" .$count."</td>";
 													echo"<td style='width:20%' align='center'>" .$rowlist['Applicant_Name']." </td>";
 													echo"<td style='width:20%' align='center'>" .$rowlist['user_Ic']."</td>";
 													
-														if ($rowlist['Status_1'] == 'Interview') {
-													  // do something
+													if ($rowlist['Status_1'] == 'Interview') 
+													{
 													  echo"<td style='width:15%' align='center'>" .$rowlist['Status_1']."</td>";	
-													} else {
+													} 
+													else 
+													{
 													  echo"<td style='width:15%' align='center'>" .$rowlist['Status_1']."<br/>".$rowlist['Status_2']."</td>";	
-											}		
+													}		
+													
 											echo"<td style='width:10%' align='center'>" .$rowlist['Approval_status']."</td>";
 											echo"<td style='width:10%' align='center'>" .$rowlist['Created_date']."</td>";
+											
 											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='notify.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Notify</a></td>";
-											if ($rowlist['Status_1'] == 'Interview') {
+											
+											if ($rowlist['Status_1'] == 'Interview') 
+											{
 											echo"<td style='width:10%' align='center'><a style='border-radius: 8px;' class='btn btn-primary btn-sm' href ='DecisionIv.php?Applicant_Name=$rowlist[Applicant_Name] & user_Ic=$rowlist[user_Ic] '>Decision</a></td>";
 											}
-													
-													
-											}			
+											
+											echo "</tr>";		
+											
 									 }
 
 									?>
                                     </tbody>
-                                </table>
+                               </table>
 										
 									
 								</div>
@@ -255,11 +258,11 @@ $('#verify').click(function(){
 	var page_type = $('#app_post1').val();
 	
 	if(page_type==1){
-		window.location.href='shortlist.php'
+		window.location.href='shortlist.php';
 	}else if(page_type==2){
-		window.location.href='shortlist1.php'
+		window.location.href='shortlist1.php';
 	}else if(page_type==3){
-		window.location.href='shortlist2.php'
+		window.location.href='shortlist2.php';
 	}
 	
 return false;

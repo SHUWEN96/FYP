@@ -13,14 +13,13 @@ session_start();
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>E-Recruitment Management System</title>
+     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" type="image/ico" href="images/icon.png" />
 
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -161,7 +160,7 @@ session_start();
 									</tr>
 									<?php  	  
 									
-									$qlist = "SELECT * FROM decision WHERE Is_active='1'";
+									$qlist = "SELECT * FROM decision WHERE Is_active='1' AND app_post1='DS53 PROFESOR MADYA'";
 									
 									$reslist = $db->query($qlist);
 									
@@ -169,7 +168,6 @@ session_start();
 									 while($rowlist = $reslist->fetch_assoc()) { 
 											
 											   $user_Ic=$rowlist["user_Ic"];
-											if ($rowlist['app_post1'] == 'DS53 PROFESOR MADYA'){
 												$count++; 
 											   echo "<tr>";
 													echo"<td style='width:5%'>" .$count."</td>";
@@ -191,7 +189,7 @@ session_start();
 													
 													
 											}			
-									 }
+									 
 
 									?>
                                     </tbody>
